@@ -1,0 +1,46 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">e-banking-app</string>
+    <string name="api_key">https://google.com.vn</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_phone_number">Phone number</string>
+    <string name="prompt_full_name">Full name</string>
+    <string name="prompt_address">Address</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_confirm_password">Confirm password</string>
+    <string name="prompt_email" tools:ignore="ExtraTranslation">Email</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_not_have_account">Ban chua co tai khoan u? <u>Nhan vao day</u></string>
+    <string name="action_sign_up">Sign up</string>
+    <string name="action_next">Next</string>
+    <string name="error_message_fail_to_verify_phone_number">Da co loi xay ra</string>
+    <string name="error_message_fail_to_send_otp">Khong the gui otp</string>
+    <string name="error_message_password_do_not_match">Passwords do not match</string>
+    <string name="message_code_sent_already">Da gui otp!!</string>
+    <string name="action_verify">Verify</string>
+    <string name="action_resend">Resend</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_full_name">"Please input your full name"</string>
+    <string name="invalid_email">"Please input your email"</string>
+    <string name="invalid_phone_number">Invalid Phone number</string>
+    <string name="invalid_dob">Please select your dob</string>
+    <string name="invalid_address">Please input your address</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_main_flow">MainFlowActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="select_your_gender">Select Your Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="address">Address</string>
+    <string name="fail_to_register">Da co loi xay ra. Dang ky khong thah cong</string>
+    <string name="fail_to_fetch_branch_list">Da co loi xay ra!!!</string>
+    <string name="prompt_identity">Identity number</string>
+    <string name="invalid_identity">Please input yout identity number</string>
+</resources>
