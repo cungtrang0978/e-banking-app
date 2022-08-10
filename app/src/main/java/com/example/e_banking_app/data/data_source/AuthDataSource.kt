@@ -6,6 +6,7 @@ import com.example.e_banking_app.data.api.ServiceBuilder
 import com.example.e_banking_app.data.model.BaseApiResponse
 import com.example.e_banking_app.data.model.input.LoginInput
 import com.example.e_banking_app.data.model.input.RegisterInput
+import com.example.e_banking_app.ui.login.LoginResponse
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
@@ -17,27 +18,30 @@ class AuthDataSource {
 
     fun login(
         loginInput: LoginInput,
-        onSuccess: (String) -> Unit,
+        onSuccess: (LoginResponse) -> Unit,
         onFailure: () -> Unit,
     ) {
         try {
             val requestBody =
                 loginInput.toJSON().toRequestBody("application/json".toMediaTypeOrNull())
             request.login(requestBody).enqueue(
-                object : Callback<BaseApiResponse<String>> {
+                object : Callback<BaseApiResponse<LoginResponse>> {
                     override fun onResponse(
-                        call: Call<BaseApiResponse<String>>,
-                        response: Response<BaseApiResponse<String>>
+                        call: Call<BaseApiResponse<LoginResponse>>,
+                        response: Response<BaseApiResponse<LoginResponse>>
                     ) {
                         if (response.isSuccessful && response.body()?.query_err == false) {
                             //TODO: handle later
-                            onSuccess("token")
+                            onSuccess(response.body()!!.result)
                         } else {
                             onFailure()
                         }
                     }
 
-                    override fun onFailure(call: Call<BaseApiResponse<String>>, t: Throwable) {
+                    override fun onFailure(
+                        call: Call<BaseApiResponse<LoginResponse>>,
+                        t: Throwable
+                    ) {
                         onFailure()
                     }
                 },

@@ -21,9 +21,10 @@ class LoginViewModel(private val authRepository: AuthRepository) : ViewModel() {
         // can be launched in a separate asynchronous job
         authRepository.login(
             LoginInput(username, password),
-            onSuccess = { token ->
+            onSuccess = { loginResponse ->
                 _loginResult.value =
-                    LoginResult(success = token)
+                    LoginResult(success = loginResponse)
+
             },
             onFailure = {
                 _loginResult.value = LoginResult(error = R.string.login_failed)

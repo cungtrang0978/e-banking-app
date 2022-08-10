@@ -43,4 +43,17 @@
     <string name="fail_to_fetch_branch_list">Da co loi xay ra!!!</string>
     <string name="prompt_identity">Identity number</string>
     <string name="invalid_identity">Please input yout identity number</string>
+    <string name="access_token">access_token</string>
+    <string name="logout">Logout</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_balance">Balance</string>
+    <string name="change_password">Change password</string>
+    <string name="check_balance">Check balance</string>
+    <string name="transfer">Transfer</string>
+    <string name="electric_water_payment">Electricity water payment</string>
+    <string name="passbook">Passbook</string>
+    <string name="e_banking_app">E-banking App</string>
+    <string name="new_password">New password</string>
+    <string name="old_password">Old password</string>
+    <string name="update">Update</string>
 </resources>

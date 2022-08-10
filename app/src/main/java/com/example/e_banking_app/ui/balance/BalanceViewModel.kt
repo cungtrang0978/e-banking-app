@@ -1,10 +1,10 @@
-package com.example.e_banking_app.ui.dashboard
+package com.example.e_banking_app.ui.balance
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class BalanceViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

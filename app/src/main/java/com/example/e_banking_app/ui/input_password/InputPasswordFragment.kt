@@ -18,7 +18,7 @@ class InputPasswordFragment : Fragment() {
     private var _binding: FragmentInputPasswordBinding? = null
     private val binding get() = _binding!!
 
-    val args: InputPasswordFragmentArgs by navArgs()
+    private val args: InputPasswordFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

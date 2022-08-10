@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -16,6 +16,9 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popUpTo="@+id/loginFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mobile_navigation"
+            app:destination="@id/mobile_navigation" />
     </fragment>
 
     <activity
@@ -29,8 +32,7 @@
         tools:layout="@layout/fragment_input_phone_number">
         <action
             android:id="@+id/action_inputPhoneNumberFragment_to_inputOtpFragment"
-            app:destination="@id/inputOtpFragment">
-        </action>
+            app:destination="@id/inputOtpFragment" />
     </fragment>
     <fragment
         android:id="@+id/inputOtpFragment"
@@ -39,7 +41,7 @@
         tools:layout="@layout/fragment_input_otp">
         <action
             android:id="@+id/action_inputOtpFragment_to_inputPasswordFragment"
-            app:destination="@id/inputPasswordFragment"/>
+            app:destination="@id/inputPasswordFragment" />
         <argument
             android:name="phoneNumber"
             app:argType="string" />
@@ -48,7 +50,7 @@
         android:id="@+id/registerFragment"
         android:name="com.example.e_banking_app.ui.register.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
 
         <argument
             android:name="registerInput"
@@ -70,6 +72,15 @@
             app:argType="com.example.e_banking_app.data.model.input.RegisterInput" />
     </fragment>
     <include app:graph="@navigation/mobile_navigation" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.e_banking_app.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 
 
 </navigation>

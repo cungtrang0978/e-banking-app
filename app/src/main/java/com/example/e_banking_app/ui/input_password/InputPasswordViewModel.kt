@@ -9,7 +9,6 @@ class InputPasswordViewModel : ViewModel() {
     private val _inputPasswordFormState = MutableLiveData<InputPasswordFormState>()
     val inputPasswordFormState: LiveData<InputPasswordFormState> = _inputPasswordFormState
 
-
     fun dataChanged(password: String, confirmPassword: String) {
         val valid = password == confirmPassword
         _inputPasswordFormState.value =

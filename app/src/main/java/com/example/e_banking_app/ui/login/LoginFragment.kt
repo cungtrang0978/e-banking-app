@@ -1,5 +1,7 @@
 package com.example.e_banking_app.ui.login
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.example.e_banking_app.MainFlowActivity
 import com.example.e_banking_app.R
 import com.example.e_banking_app.databinding.FragmentLoginBinding
 
@@ -30,10 +33,8 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,9 +70,7 @@ class LoginFragment : Fragment() {
                     showLoginFailed(it)
                 }
                 loginResult.success?.let {
-                    //TODO: handle later
-//                    updateUiWithUser(it)
-
+                    onLoginSuccess(it)
                 }
             })
 
@@ -117,13 +116,6 @@ class LoginFragment : Fragment() {
 
     }
 
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome) + model.displayName
-        // TODO : initiate successful logged in experience
-        val appContext = context?.applicationContext ?: return
-        Toast.makeText(appContext, welcome, Toast.LENGTH_LONG).show()
-    }
-
     private fun showLoginFailed(@StringRes errorString: Int) {
         val appContext = context?.applicationContext ?: return
         Toast.makeText(appContext, errorString, Toast.LENGTH_LONG).show()
@@ -132,5 +124,21 @@ class LoginFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun onLoginSuccess(loginResponse: LoginResponse) {
+        saveToken(loginResponse.token)
+        val intent = Intent(context, MainFlowActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
+
+    }
+
+    private fun saveToken(token: String) {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        with(sharedPref.edit()) {
+            putString(getString(R.string.access_token), token)
+            apply()
+        }
     }
 }

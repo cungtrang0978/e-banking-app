@@ -4,6 +4,7 @@ import com.example.e_banking_app.data.data_source.AuthDataSource
 import com.example.e_banking_app.data.model.LoggedInUser
 import com.example.e_banking_app.data.model.input.LoginInput
 import com.example.e_banking_app.data.model.input.RegisterInput
+import com.example.e_banking_app.ui.login.LoginResponse
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -32,7 +33,7 @@ class AuthRepository(private val dataSource: AuthDataSource) {
 
     fun login(
         loginInput: LoginInput,
-        onSuccess: (String) -> Unit,
+        onSuccess: (LoginResponse) -> Unit,
         onFailure: () -> Unit,
     ) {
         // handle login
