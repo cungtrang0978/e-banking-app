@@ -7,13 +7,13 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         buildConfigField "String", "BASE_URL", "ADADA"
         applicationId "com.example.e_banking_app"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 

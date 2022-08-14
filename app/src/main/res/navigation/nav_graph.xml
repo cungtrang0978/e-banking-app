@@ -21,10 +21,6 @@
             app:destination="@id/mobile_navigation" />
     </fragment>
 
-    <activity
-        android:id="@+id/mainFlowActivity"
-        android:name="com.example.e_banking_app.MainFlowActivity"
-        android:label="MainFlowActivity" />
     <fragment
         android:id="@+id/inputPhoneNumberFragment"
         android:name="com.example.e_banking_app.ui.input_phone_number.InputPhoneNumberFragment"
@@ -79,7 +75,8 @@
         tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:launchSingleTop="true" />
     </fragment>
 
 

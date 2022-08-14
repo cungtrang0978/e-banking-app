@@ -19,6 +19,7 @@ import com.example.e_banking_app.MainFlowActivity
 import com.example.e_banking_app.R
 import com.example.e_banking_app.databinding.FragmentLoginBinding
 
+
 class LoginFragment : Fragment() {
 
     private lateinit var loginViewModel: LoginViewModel
@@ -37,14 +38,25 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        val callback: OnBackPressedCallback =
+//            object : OnBackPressedCallback(false /* enabled by default */) {
+//                override fun handleOnBackPressed() {
+//
+//                }
+//            }
+//
+//        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner    , callback)
+
+
         loginViewModel =
             ViewModelProvider(this, LoginViewModelFactory())[LoginViewModel::class.java]
 
         val usernameEditText = binding.username
         val passwordEditText = binding.password
-        val loginButton = binding.login
+        val loginButton = binding.btnLogin
         val registerButton = binding.register
         val loadingProgressBar = binding.loading
 
@@ -135,7 +147,9 @@ class LoginFragment : Fragment() {
     }
 
     private fun saveToken(token: String) {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val sharedPref =
+            activity?.getSharedPreferences(getString(R.string.access_token), Context.MODE_PRIVATE)
+                ?: return
         with(sharedPref.edit()) {
             putString(getString(R.string.access_token), token)
             apply()

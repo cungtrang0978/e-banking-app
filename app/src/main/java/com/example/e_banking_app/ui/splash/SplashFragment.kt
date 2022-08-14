@@ -40,8 +40,9 @@ class SplashFragment : Fragment() {
     }
 
     private fun checkToken(): Boolean {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return false
-//        val defaultValue = resources.getInteger(R.integer.saved_high_score_default_key)
+        val sharedPref =
+            activity?.getSharedPreferences(getString(R.string.access_token), Context.MODE_PRIVATE)
+                ?: return false
         val accessToken = sharedPref.getString(getString(R.string.access_token), "")
         return accessToken?.isNotBlank() ?: false
     }
