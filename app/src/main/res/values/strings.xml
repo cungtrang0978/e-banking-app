@@ -58,4 +58,12 @@
     <string name="update">Update</string>
     <string name="change_password_success">Change password successfully</string>
     <string name="change_password_failure">Change password fail!</string>
+    <string name="card_management">Card management</string>
+    <string name="prompt_pin">PIN</string>
+    <string name="action_create">Create</string>
+    <string name="action_add">Add</string>
+    <string name="create_card_successfully">Create card successfully</string>
+    <string name="create_card_fail">Create card fail</string>
+    <string name="error_pin_empty">Invalid PIN</string>
+    <string name="fetch_card_list_error">Fail to fetch card list</string>
 </resources>

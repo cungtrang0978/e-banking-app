@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +19,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
@@ -43,6 +44,34 @@
             android:divider="@drawable/vertical_divider"
             android:orientation="vertical"
             android:showDividers="beginning|end|middle">
+
+            <LinearLayout
+                android:id="@+id/card_management"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_card" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_weight="1"
+                    android:text="@string/card_management" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_forward" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/check_account"

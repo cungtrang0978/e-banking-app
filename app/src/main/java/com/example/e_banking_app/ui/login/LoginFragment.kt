@@ -78,6 +78,7 @@ class LoginFragment : Fragment() {
             Observer { loginResult ->
                 loginResult ?: return@Observer
                 loadingProgressBar.visibility = View.GONE
+                loginButton.isEnabled = true
                 loginResult.error?.let {
                     showLoginFailed(it)
                 }
@@ -116,6 +117,8 @@ class LoginFragment : Fragment() {
 
         loginButton.setOnClickListener {
             loadingProgressBar.visibility = View.VISIBLE
+            loginButton.isEnabled = false
+
             loginViewModel.login(
                 usernameEditText.text.toString(),
                 passwordEditText.text.toString()

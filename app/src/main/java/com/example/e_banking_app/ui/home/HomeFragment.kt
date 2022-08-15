@@ -16,6 +16,7 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val passbookBtn get() = binding.passbook
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +34,14 @@ class HomeFragment : Fragment() {
             textView.text = it
         }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        passbookBtn.setOnClickListener {
+
+        }
     }
 
     override fun onDestroyView() {

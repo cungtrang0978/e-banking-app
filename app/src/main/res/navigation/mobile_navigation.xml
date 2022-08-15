@@ -25,11 +25,28 @@
         <action
             android:id="@+id/action_navigation_profile_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_cardManagementFragment"
+            app:destination="@id/cardManagementFragment" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.example.e_banking_app.ui.change_password.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/cardManagementFragment"
+        android:name="com.example.e_banking_app.ui.card.management.CardManagementFragment"
+        android:label="fragment_card_list"
+        tools:layout="@layout/fragment_card_management" >
+        <action
+            android:id="@+id/action_cardManagementFragment_to_addCardFragment"
+            app:destination="@id/addCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCardFragment"
+        android:name="com.example.e_banking_app.ui.card.add.AddCardFragment"
+        android:label="fragment_add_card"
+        tools:layout="@layout/fragment_add_card" />
 
 </navigation>
