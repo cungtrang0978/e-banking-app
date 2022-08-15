@@ -25,21 +25,21 @@ class AuthDataSource {
             val requestBody =
                 loginInput.toJSON().toRequestBody("application/json".toMediaTypeOrNull())
             request.login(requestBody).enqueue(
-                object : Callback<BaseApiResponse<LoginResponse>> {
+                object : Callback<BaseApiResponse<String>> {
                     override fun onResponse(
-                        call: Call<BaseApiResponse<LoginResponse>>,
-                        response: Response<BaseApiResponse<LoginResponse>>
+                        call: Call<BaseApiResponse<String>>,
+                        response: Response<BaseApiResponse<String>>
                     ) {
                         if (response.isSuccessful && response.body()?.query_err == false) {
                             //TODO: handle later
-                            onSuccess(response.body()!!.result)
+                            onSuccess(LoginResponse(response.body()!!.result))
                         } else {
                             onFailure()
                         }
                     }
 
                     override fun onFailure(
-                        call: Call<BaseApiResponse<LoginResponse>>,
+                        call: Call<BaseApiResponse<String>>,
                         t: Throwable
                     ) {
                         onFailure()

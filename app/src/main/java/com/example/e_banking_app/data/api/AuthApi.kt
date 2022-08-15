@@ -11,5 +11,5 @@ interface AuthApi {
     fun register(@Body requestBody: RequestBody): retrofit2.Call<BaseApiResponse<Any>>
 
     @POST("customers/signin")
-    fun login(@Body requestBody: RequestBody): retrofit2.Call<BaseApiResponse<LoginResponse>>
+    fun login(@Body requestBody: RequestBody): retrofit2.Call<BaseApiResponse<String>>
 }
