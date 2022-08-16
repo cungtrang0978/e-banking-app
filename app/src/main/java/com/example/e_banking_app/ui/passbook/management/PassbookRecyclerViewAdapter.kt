@@ -1,48 +1,47 @@
-package com.example.e_banking_app.ui.card.management
+package com.example.e_banking_app.ui.passbook.management
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.e_banking_app.data.model.card.Card
-import com.example.e_banking_app.databinding.FragmentCardItemBinding
-import com.maxpilotto.creditcardview.CreditCardView
+import com.example.e_banking_app.data.model.passbook.Passbook
+import com.example.e_banking_app.databinding.FragmentPassbookItemBinding
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class CardManagementRecyclerViewAdapter(
-    private val values: List<Card>
-) : RecyclerView.Adapter<CardManagementRecyclerViewAdapter.ViewHolder>() {
+class PassbookRecyclerViewAdapter(
+    private val values: List<Passbook>
+) : RecyclerView.Adapter<PassbookRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
-            FragmentCardItemBinding.inflate(
+            FragmentPassbookItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
         )
+
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.card.number = item.id_card
-        holder.card.expiry = item.expired_at
-        holder.card.holder = item.id_customer
+        holder.idView.text = item.id
+        holder.contentView.text = item.id
     }
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentCardItemBinding) :
+    inner class ViewHolder(binding: FragmentPassbookItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val card : CreditCardView = binding.card
-
+        val idView: TextView = binding.itemNumber
+        val contentView: TextView = binding.content
 
         override fun toString(): String {
-            return super.toString() + " '" + card.cardData.holder + "'"
+            return super.toString() + " '" + contentView.text + "'"
         }
     }
 

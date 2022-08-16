@@ -18,3 +18,6 @@ interface CardApi {
         @Path("token") token: String,
     ): retrofit2.Call<BaseApiResponse<List<Card>>>
 }
+
+
+

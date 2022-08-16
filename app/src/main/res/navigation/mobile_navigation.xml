@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.example.e_banking_app.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_passbookFragment"
+            app:destination="@id/passbookFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_balance"
@@ -48,5 +52,29 @@
         android:name="com.example.e_banking_app.ui.card.add.AddCardFragment"
         android:label="fragment_add_card"
         tools:layout="@layout/fragment_add_card" />
+    <fragment
+        android:id="@+id/addPassbookFragment"
+        android:name="com.example.e_banking_app.ui.passbook.add.AddPassbookFragment"
+        android:label="fragment_add_passbook"
+        tools:layout="@layout/fragment_add_passbook" />
+    <fragment
+        android:id="@+id/passbookFragment"
+        android:name="com.example.e_banking_app.ui.passbook.management.PassbookFragment"
+        android:label="fragment_passbook"
+        tools:layout="@layout/fragment_passbook" >
+
+        <action
+            android:id="@+id/action_passbookFragment_to_passbookCategoryFragment"
+            app:destination="@id/passbookCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passbookCategoryFragment"
+        android:name="com.example.e_banking_app.ui.passbook.category.PassbookCategoryFragment"
+        android:label="fragment_passbook_category"
+        tools:layout="@layout/fragment_passbook_category" >
+        <action
+            android:id="@+id/action_passbookCategoryFragment_to_addPassbookFragment"
+            app:destination="@id/addPassbookFragment" />
+    </fragment>
 
 </navigation>

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.e_banking_app.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -40,7 +41,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         passbookBtn.setOnClickListener {
-
+            val action = HomeFragmentDirections.actionNavigationHomeToPassbookFragment()
+            findNavController().navigate(action)
         }
     }
 

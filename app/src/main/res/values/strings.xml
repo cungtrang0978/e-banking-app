@@ -66,4 +66,6 @@
     <string name="create_card_fail">Create card fail</string>
     <string name="error_pin_empty">Invalid PIN</string>
     <string name="fetch_card_list_error">Fail to fetch card list</string>
+    <string name="error_fail_to_fetch_passbook_list">Fail to fetch passbook list</string>
+    <string name="error_fail_to_fetch_passbook_category_list">Fail to fetch category list</string>
 </resources>
