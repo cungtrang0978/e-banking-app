@@ -23,7 +23,7 @@
                 android:id="@+id/profile_image"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
-                android:src="@drawable/ic_avatar"
+                android:src="@drawable/ic_avatar_male"
                 app:civ_border_color="#FF000000"
                 app:civ_border_width="2dp" />
 
@@ -85,7 +85,7 @@
                 <ImageView
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:src="@drawable/ic_check_account" />
+                    android:src="@drawable/ic_check_balance" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -129,6 +129,33 @@
 
 
             <LinearLayout
+                android:id="@+id/change_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_language" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_weight="1"
+                    android:text="@string/change_language" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_forward" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -154,7 +181,6 @@
                     android:layout_height="16dp"
                     android:src="@drawable/ic_forward" />
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

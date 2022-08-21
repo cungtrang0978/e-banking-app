@@ -16,13 +16,13 @@ class CardDataSource {
     private val request = ServiceBuilder.buildService(CardApi::class.java)
 
     fun createCard(
-        pinInput: CreateCardInput,
+        createCardInput: CreateCardInput,
         onSuccess: () -> Unit,
         onFailure: () -> Unit,
     ) {
         try {
             val requestBody =
-                pinInput.toJSON().toRequestBody("application/json".toMediaTypeOrNull())
+                createCardInput.toJSON().toRequestBody("application/json".toMediaTypeOrNull())
             request.createCard(requestBody).enqueue(
                 object : Callback<BaseApiResponse<Any>> {
                     override fun onResponse(

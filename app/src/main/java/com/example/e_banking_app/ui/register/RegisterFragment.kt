@@ -41,7 +41,7 @@ class RegisterFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private val btnRegister get() = binding.register
     private val branchSpinner get() = binding.branchSpinner
     private val progressLoading get() = binding.loading
-    private var branch_id: Int? = null
+    private var branchId: Int? = null
 
     var myCalendar: Calendar = Calendar.getInstance()
     override fun onCreateView(
@@ -142,7 +142,7 @@ class RegisterFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 email = edtEmail.text.toString(),
                 gender = getGender(),
                 citizen_identity_card = edtIdentity.text.toString(),
-                id_branch = branch_id ?: 0,
+                id_branch = branchId ?: 0,
             )
             progressLoading.visibility = View.VISIBLE
             registerViewModel.register(registerInput)
@@ -195,7 +195,7 @@ class RegisterFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 registerBranchResult.success?.let { branchList ->
                     context?.let {
                         if (branchList.isNotEmpty()) {
-                            branch_id = branchList[0].branchId
+                            branchId = branchList[0].branchId
                         }
 
                         val spinnerArrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
@@ -219,7 +219,7 @@ class RegisterFragment : Fragment(), AdapterView.OnItemSelectedListener {
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
         registerViewModel.registerBranchResult.value?.let {
             it.success?.let { list ->
-                branch_id = list[pos].branchId
+                branchId = list[pos].branchId
             }
         }
     }

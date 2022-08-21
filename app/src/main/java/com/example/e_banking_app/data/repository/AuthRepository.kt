@@ -59,4 +59,12 @@ class AuthRepository(private val dataSource: AuthDataSource) {
     ) {
         dataSource.register(registerInput, onSuccess, onFailure)
     }
+
+    fun checkPhoneNumber(
+        phoneNumber: String,
+        onSuccess: (Boolean) -> Unit,
+        onFailure: () -> Unit,
+    ){
+        dataSource.checkPhoneNumber(phoneNumber, onSuccess, onFailure)
+    }
 }

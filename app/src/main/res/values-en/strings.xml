@@ -40,8 +40,8 @@
     <string name="female">Female</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="address">Address</string>
-    <string name="fail_to_register">Fail to register</string>
-    <string name="fail_to_fetch_branch_list">Fail to fetch branch list</string>
+    <string name="fail_to_register">Da co loi xay ra. Dang ky khong thah cong</string>
+    <string name="fail_to_fetch_branch_list">Da co loi xay ra!!!</string>
     <string name="prompt_identity">Identity number</string>
     <string name="invalid_identity">Please input yout identity number</string>
     <string name="access_token">access_token</string>
@@ -80,4 +80,5 @@
     <string name="add_passbook_success">Create card successfully</string>
     <string name="add_passbook_error">Add passbook fail!!</string>
     <string name="registered_phone_number">This phone number has been registered</string>
+
 </resources>

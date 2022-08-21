@@ -7,6 +7,7 @@ import com.example.e_banking_app.data.model.BaseApiResponse
 import com.example.e_banking_app.data.model.input.LoginInput
 import com.example.e_banking_app.data.model.input.RegisterInput
 import com.example.e_banking_app.ui.login.LoginResponse
+import com.google.gson.Gson
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
@@ -21,6 +22,7 @@ class AuthDataSource {
         onSuccess: (LoginResponse) -> Unit,
         onFailure: () -> Unit,
     ) {
+
         try {
             val requestBody =
                 loginInput.toJSON().toRequestBody("application/json".toMediaTypeOrNull())
@@ -32,6 +34,7 @@ class AuthDataSource {
                     ) {
                         if (response.isSuccessful && response.body()?.query_err == false) {
                             //TODO: handle later
+                            Log.d("TOKEN", response.body().toString())
                             onSuccess(LoginResponse(response.body()!!.result))
                         } else {
                             onFailure()
@@ -81,6 +84,39 @@ class AuthDataSource {
                     }
 
                     override fun onFailure(call: Call<BaseApiResponse<Any>>, t: Throwable) {
+                        onFailure()
+                    }
+
+                },
+            )
+        } catch (e: Throwable) {
+            Log.d("register: ", e.toString())
+            onFailure()
+        }
+    }
+
+    fun checkPhoneNumber(
+        phoneNumber: String,
+        onSuccess: (Boolean) -> Unit,
+        onFailure: () -> Unit,
+    ) {
+        try {
+            val requestBody =
+                Gson().toJson(phoneNumber).toRequestBody("application/json".toMediaTypeOrNull())
+            request.checkPhoneNumber(requestBody).enqueue(
+                object : Callback<BaseApiResponse<Boolean>> {
+                    override fun onResponse(
+                        call: Call<BaseApiResponse<Boolean>>,
+                        response: Response<BaseApiResponse<Boolean>>
+                    ) {
+                        if (response.isSuccessful && response.body()?.query_err == false && response.body() != null) {
+                            onSuccess(response.body()!!.result)
+                        } else {
+                            onFailure()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<BaseApiResponse<Boolean>>, t: Throwable) {
                         onFailure()
                     }
 

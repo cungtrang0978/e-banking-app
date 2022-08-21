@@ -11,28 +11,42 @@
         android:id="@+id/phone_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="32dp"
         android:textAlignment="center"
-        />
-
-    <com.poonam.androidotpview2.OtpView
-        android:id="@+id/otpView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:dashColor="@color/end_color_otp"
-        app:lineCount="6"
-        app:lineEndColor="@color/start_color_otp"
-        app:lineStartColor="@color/end_color_otp"
-        app:showDash="true"
-        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/phone_number"
-        android:layout_marginTop="32dp"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <com.poonam.androidotpview2.OtpView
+            android:id="@+id/otpView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:inputType="number"
+            app:dashColor="@color/end_color_otp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/phone_number"
+            app:lineCount="6"
+
+            app:lineEndColor="@color/start_color_otp"
+            app:lineStartColor="@color/end_color_otp"
+            app:showDash="false" />
+
+
+<!--    <com.gne.www.lib.PinView-->
+<!--        android:id="@+id/otpView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:inputType="number"-->
+<!--        app:isPassword="false"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@id/phone_number"-->
+<!--        app:passwordToggleSize="26dp"-->
+<!--        app:pinCount="6"-->
+
+<!--        app:pinSize="30dp" />-->
 
     <Button
         android:id="@+id/verify"
@@ -46,14 +60,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/otpView"
         app:layout_constraintVertical_bias="0.1" />
+
     <Button
         android:id="@+id/resend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
+        android:layout_marginTop="16dp"
         android:enabled="true"
         android:text="@string/action_resend"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/verify" />
@@ -71,5 +86,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

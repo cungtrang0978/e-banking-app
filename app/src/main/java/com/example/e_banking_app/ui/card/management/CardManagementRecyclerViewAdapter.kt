@@ -30,8 +30,8 @@ class CardManagementRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.card.number = item.id_card
-        holder.card.expiry = item.expired_at
-        holder.card.holder = item.id_customer
+        holder.card.expiry = "item.expired_at"
+        holder.card.holder = "name"
     }
 
     override fun getItemCount(): Int = values.size

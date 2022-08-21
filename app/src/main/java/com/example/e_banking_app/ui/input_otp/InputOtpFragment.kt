@@ -88,7 +88,6 @@ class InputOtpFragment : Fragment() {
 
         otpView.addTextChangedListener(afterTextChangedListener)
 
-
         fun onInit() {
             loadingProgressBar.visibility = View.VISIBLE
             inputOtpViewModel.sendVerificationCode(

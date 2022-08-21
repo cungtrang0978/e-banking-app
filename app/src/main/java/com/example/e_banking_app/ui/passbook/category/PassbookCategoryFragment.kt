@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_banking_app.data.repository.PassbookRepository
@@ -48,8 +49,16 @@ class PassbookCategoryFragment : Fragment() {
             Observer { state ->
                 state ?: return@Observer
                 loading.visibility = View.GONE
-                state.success?.let {
-                    rcvCategory.adapter = PassbookCategoryRecyclerViewAdapter(it)
+                state.success?.let { list ->
+                    rcvCategory.adapter =
+                        PassbookCategoryRecyclerViewAdapter(list) { selectedPassbookCategory ->
+                            val action =
+                                PassbookCategoryFragmentDirections.actionPassbookCategoryFragmentToAddPassbookFragment(
+                                    selectedPassbookCategory
+                                )
+                            findNavController().navigate(action)
+
+                        }
                 }
 
                 state.error?.let {

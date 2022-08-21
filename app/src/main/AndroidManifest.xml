@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ebankingapp"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        android:localeConfig="@xml/locales_config"
+        tools:targetApi="33">
         <activity
             android:name=".MainFlowActivity"
             android:exported="false"

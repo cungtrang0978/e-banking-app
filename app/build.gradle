@@ -16,6 +16,7 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
+        resConfigs("en", "vi")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -88,6 +89,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
     implementation 'com.github.maxpilotto:credit-card-view:8.0.0'
+    implementation 'com.github.darshan-miskin:PinView-Android:v1.1.8'
+    implementation 'com.github.chaya222:AndroidOtpView:0.0.2'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
