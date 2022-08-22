@@ -9,14 +9,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.e_banking_app.MainActivity
 import com.example.e_banking_app.R
-import com.example.e_banking_app.data.data_source.UserDataSource
-import com.example.e_banking_app.data.repository.UserRepository
+import com.example.e_banking_app.data.factory.UserViewModelFactory
 import com.example.e_banking_app.databinding.FragmentProfileBinding
-import com.example.e_banking_app.utils.ContextUtil
-import java.util.*
 
 class ProfileFragment : Fragment() {
 
@@ -32,16 +30,17 @@ class ProfileFragment : Fragment() {
     private val cardManagementBtn get() = binding.cardManagement
     private val changeLanguageBtn get() = binding.changeLanguage
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val profileViewModel = ProfileViewModel(UserRepository(UserDataSource()))
+        val profileViewModel =
+            ViewModelProvider(
+                this,
+                UserViewModelFactory(context!!)
+            )[ProfileViewModel::class.java]
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root

@@ -1,18 +1,20 @@
 package com.example.e_banking_app.data.data_source
 
+import android.content.Context
 import android.util.Log
 import com.example.e_banking_app.data.api.ServiceBuilder
 import com.example.e_banking_app.data.api.UserApi
 import com.example.e_banking_app.data.model.BaseApiResponse
 import com.example.e_banking_app.data.model.input.ChangePasswordInput
 import com.example.e_banking_app.data.model.user.User
+import com.example.e_banking_app.utils.AuthUtils
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UserDataSource {
+class UserDataSource(private val context: Context) {
     private val request = ServiceBuilder.buildService(UserApi::class.java)
 
     fun changePassword(
@@ -23,7 +25,8 @@ class UserDataSource {
         try {
             val requestBody =
                 changePasswordInput.toJSON().toRequestBody("application/json".toMediaTypeOrNull())
-            request.changePassword(requestBody).enqueue(
+            val token = AuthUtils.getToken(context)
+            request.changePassword(requestBody, token).enqueue(
                 object : Callback<BaseApiResponse<Any>> {
                     override fun onResponse(
                         call: Call<BaseApiResponse<Any>>,

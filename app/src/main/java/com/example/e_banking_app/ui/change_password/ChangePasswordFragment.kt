@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.e_banking_app.data.factory.UserViewModelFactory
 import com.example.e_banking_app.databinding.FragmentChangePasswordBinding
 
 class ChangePasswordFragment : Fragment() {
@@ -31,7 +32,7 @@ class ChangePasswordFragment : Fragment() {
     ): View {
         viewModel = ViewModelProvider(
             this,
-            ChangePasswordViewModelFactory()
+            UserViewModelFactory(context!!)
         )[ChangePasswordViewModel::class.java]
         _binding = FragmentChangePasswordBinding.inflate(inflater, container, false)
         return binding.root
