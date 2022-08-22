@@ -6,8 +6,8 @@ import com.example.e_banking_app.data.api.ServiceBuilder
 import com.example.e_banking_app.data.model.BaseApiResponse
 import com.example.e_banking_app.data.model.input.LoginInput
 import com.example.e_banking_app.data.model.input.RegisterInput
+import com.example.e_banking_app.intefaces.JSONConvertible
 import com.example.e_banking_app.ui.login.LoginResponse
-import com.google.gson.Gson
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
@@ -102,7 +102,8 @@ class AuthDataSource {
     ) {
         try {
             val requestBody =
-                Gson().toJson(phoneNumber).toRequestBody("application/json".toMediaTypeOrNull())
+                PhoneNumberInput(phoneNumber).toJSON()
+                    .toRequestBody("application/json".toMediaTypeOrNull())
             request.checkPhoneNumber(requestBody).enqueue(
                 object : Callback<BaseApiResponse<Boolean>> {
                     override fun onResponse(
@@ -135,7 +136,8 @@ class AuthDataSource {
     ) {
         try {
             val requestBody =
-                Gson().toJson(phoneNumber).toRequestBody("application/json".toMediaTypeOrNull())
+                PhoneNumberInput(phoneNumber).toJSON()
+                    .toRequestBody("application/json".toMediaTypeOrNull())
             request.sendForgotPasswordMail(requestBody).enqueue(
                 object : Callback<BaseApiResponse<Any>> {
                     override fun onResponse(
@@ -161,4 +163,5 @@ class AuthDataSource {
         }
     }
 
+    inner class PhoneNumberInput(val phoneNumber: String) : JSONConvertible
 }

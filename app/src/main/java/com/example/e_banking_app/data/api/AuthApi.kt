@@ -13,7 +13,7 @@ interface AuthApi {
     @POST("customers/signin")
     fun login(@Body requestBody: RequestBody): retrofit2.Call<BaseApiResponse<String>>
 
-    @GET("customers/checkPhone")
+    @POST("customers/checkPhone")
     fun checkPhoneNumber(@Body requestBody: RequestBody): retrofit2.Call<BaseApiResponse<Boolean>>
 
     @POST("customers/forgotPassword")

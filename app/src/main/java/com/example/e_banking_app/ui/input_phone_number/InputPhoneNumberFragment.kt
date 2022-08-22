@@ -46,12 +46,12 @@ class InputPhoneNumberFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         val phoneNumberEditText = binding.phoneNumber
         val nextButton = binding.next
+        val loadingProgressBar = binding.loading
 
         inputPhoneNumberViewModel.inputPhoneNumberFormState.observe(viewLifecycleOwner,
             Observer { inputPhoneNumberFormState ->
-                if (inputPhoneNumberFormState == null) {
-                    return@Observer
-                }
+                inputPhoneNumberFormState ?: return@Observer
+
                 nextButton.isEnabled = inputPhoneNumberFormState.isDateValid
                 inputPhoneNumberFormState.phoneNumberError?.let {
                     phoneNumberEditText.error = getString(it)
@@ -77,6 +77,8 @@ class InputPhoneNumberFragment : Fragment() {
         phoneNumberEditText.addTextChangedListener(afterTextChangedListener)
 
         nextButton.setOnClickListener {
+            loadingProgressBar.visibility = View.VISIBLE
+            nextButton.isEnabled = false
             inputPhoneNumberViewModel.submit(phoneNumberEditText.text.toString())
         }
 
@@ -84,6 +86,9 @@ class InputPhoneNumberFragment : Fragment() {
             viewLifecycleOwner,
             Observer { inputPhoneNumberState ->
                 inputPhoneNumberState ?: return@Observer
+
+                loadingProgressBar.visibility = View.GONE
+                nextButton.isEnabled = true
                 inputPhoneNumberState.success?.let {
                     if (it) {
                         val action =
@@ -103,8 +108,6 @@ class InputPhoneNumberFragment : Fragment() {
                     Toast.makeText(context, it, Toast.LENGTH_LONG).show()
                 }
             })
-
-
     }
 
     override fun onDestroyView() {
