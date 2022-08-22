@@ -35,7 +35,7 @@ class InputPhoneNumberViewModel(private val authRepository: AuthRepository) : Vi
             },
             onFailure = {
                 _inputPhoneNumberState.value =
-                    InputPhoneNumberState(error = R.string.registered_phone_number)
+                    InputPhoneNumberState(error = R.string.fail_to_check_phone_number)
 
             },
         )

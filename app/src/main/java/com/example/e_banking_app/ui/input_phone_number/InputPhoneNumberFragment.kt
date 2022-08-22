@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import com.example.e_banking_app.R
 import com.example.e_banking_app.data.data_source.AuthDataSource
 import com.example.e_banking_app.data.repository.AuthRepository
 import com.example.e_banking_app.databinding.FragmentInputPhoneNumberBinding
@@ -77,8 +78,6 @@ class InputPhoneNumberFragment : Fragment() {
 
         nextButton.setOnClickListener {
             inputPhoneNumberViewModel.submit(phoneNumberEditText.text.toString())
-
-
         }
 
         inputPhoneNumberViewModel.inputPhoneNumberState.observe(
@@ -86,12 +85,18 @@ class InputPhoneNumberFragment : Fragment() {
             Observer { inputPhoneNumberState ->
                 inputPhoneNumberState ?: return@Observer
                 inputPhoneNumberState.success?.let {
-                    val action =
-                        InputPhoneNumberFragmentDirections.actionInputPhoneNumberFragmentToInputOtpFragment(
-                            phoneNumberEditText.text.toString()
-                        )
-                    view.findNavController()
-                        .navigate(action)
+                    if (it) {
+                        val action =
+                            InputPhoneNumberFragmentDirections.actionInputPhoneNumberFragmentToInputOtpFragment(
+                                phoneNumberEditText.text.toString()
+                            )
+                        view.findNavController()
+                            .navigate(action)
+                    } else {
+                        Toast.makeText(context, R.string.registered_phone_number, Toast.LENGTH_LONG)
+                            .show()
+                    }
+
                 }
 
                 inputPhoneNumberState.error?.let {

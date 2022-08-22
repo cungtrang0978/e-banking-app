@@ -64,7 +64,15 @@ class AuthRepository(private val dataSource: AuthDataSource) {
         phoneNumber: String,
         onSuccess: (Boolean) -> Unit,
         onFailure: () -> Unit,
-    ){
+    ) {
         dataSource.checkPhoneNumber(phoneNumber, onSuccess, onFailure)
+    }
+
+    fun sendForgotPasswordMail(
+        phoneNumber: String,
+        onSuccess: () -> Unit,
+        onFailure: () -> Unit,
+    ) {
+        dataSource.sendForgotPasswordMail(phoneNumber, onSuccess, onFailure)
     }
 }

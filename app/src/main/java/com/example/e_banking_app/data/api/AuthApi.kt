@@ -16,5 +16,6 @@ interface AuthApi {
     @GET("customers/checkPhone")
     fun checkPhoneNumber(@Body requestBody: RequestBody): retrofit2.Call<BaseApiResponse<Boolean>>
 
-
+    @POST("customers/forgotPassword")
+    fun sendForgotPasswordMail(@Body requestBody: RequestBody): retrofit2.Call<BaseApiResponse<Any>>
 }

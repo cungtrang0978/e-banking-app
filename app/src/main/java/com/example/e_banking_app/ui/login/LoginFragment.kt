@@ -59,6 +59,7 @@ class LoginFragment : Fragment() {
         val loginButton = binding.btnLogin
         val registerButton = binding.register
         val loadingProgressBar = binding.loading
+        val forgotPasswordBtn = binding.forgotPassword
 
         loginViewModel.loginFormState.observe(viewLifecycleOwner,
             Observer { loginFormState ->
@@ -127,6 +128,10 @@ class LoginFragment : Fragment() {
 
         registerButton.setOnClickListener {
             it.findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+        forgotPasswordBtn.setOnClickListener {
+            val action = LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment()
+            it.findNavController().navigate(action)
         }
 
     }

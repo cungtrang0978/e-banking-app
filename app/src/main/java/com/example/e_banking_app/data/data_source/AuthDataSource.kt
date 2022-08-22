@@ -123,8 +123,42 @@ class AuthDataSource {
                 },
             )
         } catch (e: Throwable) {
-            Log.d("register: ", e.toString())
+            Log.d("checkPhoneNumber: ", e.toString())
             onFailure()
         }
     }
+
+    fun sendForgotPasswordMail(
+        phoneNumber: String,
+        onSuccess: () -> Unit,
+        onFailure: () -> Unit,
+    ) {
+        try {
+            val requestBody =
+                Gson().toJson(phoneNumber).toRequestBody("application/json".toMediaTypeOrNull())
+            request.sendForgotPasswordMail(requestBody).enqueue(
+                object : Callback<BaseApiResponse<Any>> {
+                    override fun onResponse(
+                        call: Call<BaseApiResponse<Any>>,
+                        response: Response<BaseApiResponse<Any>>
+                    ) {
+                        if (response.isSuccessful && response.body()?.query_err == false) {
+                            onSuccess()
+                        } else {
+                            onFailure()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<BaseApiResponse<Any>>, t: Throwable) {
+                        onFailure()
+                    }
+
+                },
+            )
+        } catch (e: Throwable) {
+            Log.d("sendForgotPasswordMail: ", e.toString())
+            onFailure()
+        }
+    }
+
 }

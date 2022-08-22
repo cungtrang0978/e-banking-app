@@ -79,6 +79,11 @@
     <string name="month">Months</string>
     <string name="add_passbook_success">Create card successfully</string>
     <string name="add_passbook_error">Add passbook fail!!</string>
+    <string name="fail_to_check_phone_number">Fail!!</string>
     <string name="registered_phone_number">This phone number has been registered</string>
+    <string name="action_forgot_password">Forgot password</string>
+    <string name="action_send">Send</string>
+    <string name="send_forgot_password_mail_succesfully">Sen forgot password mail successfully</string>
+    <string name="fail_to_send_forgot_password_mail">Fail to send forgot password mail</string>
 
 </resources>
