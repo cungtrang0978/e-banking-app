@@ -1,9 +1,6 @@
 package com.example.e_banking_app
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.LocaleListCompat
 import androidx.navigation.NavController
@@ -22,6 +19,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+
 
         setupActionBarWithNavController(navController)
 
@@ -47,10 +45,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 //        resources.updateConfiguration(config, resources.displayMetrics)
     }
 
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-        return super.onCreateView(name, context, attrs)
-    }
-
     override fun onSupportNavigateUp(): Boolean {
 //        val f: Fragment? = supportFragmentManager.findFragmentById(R.id.login)
 //        val currentFragment = navHostFragment.childFragmentManager.fragments[0]
@@ -59,4 +53,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         return navController.navigateUp() || super.onSupportNavigateUp()
 
     }
+
+
 }

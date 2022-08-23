@@ -24,7 +24,7 @@
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_full_name">Please input your full name</string>
-    <string name="invalid_email">"Please input your email"</string>
+    <string name="invalid_email">"Your email is invalid"</string>
     <string name="invalid_phone_number">Invalid Phone number</string>
     <string name="invalid_dob">Please select your dob</string>
     <string name="invalid_address">Please input your address</string>
@@ -43,7 +43,7 @@
     <string name="fail_to_register">Fail to register</string>
     <string name="fail_to_fetch_branch_list">Fail to fetch branch list</string>
     <string name="prompt_identity">Identity number</string>
-    <string name="invalid_identity">Please input yout identity number</string>
+    <string name="invalid_identity">Your identity number is invalid</string>
     <string name="access_token">access_token</string>
     <string name="logout">Logout</string>
     <string name="title_profile">Profile</string>

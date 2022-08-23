@@ -20,6 +20,8 @@ class ForgotPasswordFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val phoneNumberEdt get() = binding.phoneNumber
+    private val emailEdt get() = binding.mail
+    private val identityNumberEdt get() = binding.citizenIdentityCard
     private val sendBtn get() = binding.send
     private val loadingProgressBar get() = binding.loading
 
@@ -38,11 +40,17 @@ class ForgotPasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         phoneNumberEdt.addTextChangedListener(afterTextChangedListener)
+        emailEdt.addTextChangedListener(afterTextChangedListener)
+        identityNumberEdt.addTextChangedListener(afterTextChangedListener)
 
         sendBtn.setOnClickListener {
             loadingProgressBar.visibility = View.VISIBLE
             sendBtn.isEnabled = false
-            viewModel.submit(phoneNumberEdt.text.toString())
+            viewModel.submit(
+                phoneNumber = phoneNumberEdt.text.toString(),
+                mail = emailEdt.text.toString(),
+                identityNumber = identityNumberEdt.text.toString()
+            )
         }
 
         viewModel.result.observe(
@@ -69,6 +77,12 @@ class ForgotPasswordFragment : Fragment() {
                 state.phoneNumberError?.let {
                     phoneNumberEdt.error = getString(it)
                 }
+                state.identityNumber?.let {
+                    identityNumberEdt.error = getString(it)
+                }
+                state.mailError?.let {
+                    emailEdt.error = getString(it)
+                }
             })
 
 
@@ -85,7 +99,9 @@ class ForgotPasswordFragment : Fragment() {
 
         override fun afterTextChanged(s: Editable) {
             viewModel.dataChanged(
-                s.toString()
+                phoneNumber = phoneNumberEdt.text.toString(),
+                identityNumber = identityNumberEdt.text.toString(),
+                email = emailEdt.text.toString()
             )
         }
     }

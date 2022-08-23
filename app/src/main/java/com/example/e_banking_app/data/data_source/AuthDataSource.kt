@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.e_banking_app.data.api.AuthApi
 import com.example.e_banking_app.data.api.ServiceBuilder
 import com.example.e_banking_app.data.model.BaseApiResponse
+import com.example.e_banking_app.data.model.input.ForgotPasswordInput
 import com.example.e_banking_app.data.model.input.LoginInput
 import com.example.e_banking_app.data.model.input.RegisterInput
 import com.example.e_banking_app.intefaces.JSONConvertible
@@ -130,13 +131,13 @@ class AuthDataSource {
     }
 
     fun sendForgotPasswordMail(
-        phoneNumber: String,
+        forgotPasswordInput: ForgotPasswordInput,
         onSuccess: () -> Unit,
         onFailure: () -> Unit,
     ) {
         try {
             val requestBody =
-                PhoneNumberInput(phoneNumber).toJSON()
+                forgotPasswordInput.toJSON()
                     .toRequestBody("application/json".toMediaTypeOrNull())
             request.sendForgotPasswordMail(requestBody).enqueue(
                 object : Callback<BaseApiResponse<Any>> {

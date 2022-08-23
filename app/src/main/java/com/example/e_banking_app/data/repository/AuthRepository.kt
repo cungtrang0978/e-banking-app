@@ -2,6 +2,7 @@ package com.example.e_banking_app.data.repository
 
 import com.example.e_banking_app.data.data_source.AuthDataSource
 import com.example.e_banking_app.data.model.LoggedInUser
+import com.example.e_banking_app.data.model.input.ForgotPasswordInput
 import com.example.e_banking_app.data.model.input.LoginInput
 import com.example.e_banking_app.data.model.input.RegisterInput
 import com.example.e_banking_app.ui.login.LoginResponse
@@ -69,10 +70,10 @@ class AuthRepository(private val dataSource: AuthDataSource) {
     }
 
     fun sendForgotPasswordMail(
-        phoneNumber: String,
+       forgotPasswordInput: ForgotPasswordInput,
         onSuccess: () -> Unit,
         onFailure: () -> Unit,
     ) {
-        dataSource.sendForgotPasswordMail(phoneNumber, onSuccess, onFailure)
+        dataSource.sendForgotPasswordMail(forgotPasswordInput, onSuccess, onFailure)
     }
 }
