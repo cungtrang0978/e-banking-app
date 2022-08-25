@@ -8,7 +8,7 @@ import com.example.e_banking_app.data.repository.UserRepository
 import com.example.e_banking_app.ui.change_password.ChangePasswordViewModel
 import com.example.e_banking_app.ui.profile.ProfileViewModel
 
-class UserViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+class UserViewModelFactory(context: Context) : ViewModelProvider.Factory {
 
     private var userRepository: UserRepository
 

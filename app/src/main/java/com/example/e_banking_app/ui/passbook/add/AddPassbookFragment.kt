@@ -60,6 +60,7 @@ class AddPassbookFragment : Fragment() {
             loading.visibility = View.GONE
 
             state.success?.let {
+                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
                 val action =
                     AddPassbookFragmentDirections.actionAddPassbookFragmentPopIncludingPassbookFragment()
                 findNavController().navigate(action)

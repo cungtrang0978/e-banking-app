@@ -49,7 +49,7 @@ class UserDataSource(private val context: Context) {
             )
 
         } catch (e: Throwable) {
-            Log.d("login: ", e.toString())
+            Log.d("changePassword: ", e.toString())
             onFailure()
         }
     }
@@ -83,7 +83,7 @@ class UserDataSource(private val context: Context) {
             )
 
         } catch (e: Throwable) {
-            Log.d("login: ", e.toString())
+            Log.d("getProfile: ", e.toString())
             onFailure()
         }
     }

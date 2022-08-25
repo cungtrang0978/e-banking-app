@@ -81,7 +81,7 @@ class PassbookRepository(private val context: Context) {
             )
 
         } catch (e: Throwable) {
-            Log.d("getPassbookCategoryList: ", e.toString())
+            Log.d("getPassbookList: ", e.toString())
             onFailure()
         }
     }
@@ -119,7 +119,7 @@ class PassbookRepository(private val context: Context) {
             )
 
         } catch (e: Throwable) {
-            Log.d("getPassbookCategoryList: ", e.toString())
+            Log.d("addPassbook: ", e.toString())
             onFailure()
         }
     }

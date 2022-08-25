@@ -85,5 +85,15 @@
     <string name="action_send">Send</string>
     <string name="send_forgot_password_mail_succesfully">Sen forgot password mail successfully</string>
     <string name="fail_to_send_forgot_password_mail">Fail to send forgot password mail</string>
+    <string name="register_successfully">Register successfully</string>
+    <string name="action_internal_transfer">Internal transfer</string>
+    <string name="action_interbank_transfer">Interbank transfer</string>
+    <string name="recipient_account_number">Recipient account number</string>
+    <string name="prompt_message">Message</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="invalid_account_number">Invalid account number</string>
+    <string name="invalid_amount">Invalid amount</string>
+    <string name="invalid_message">Invalid message</string>
+    <string name="prompt_beneficiary_bank">Beneficiary bank</string>
 
 </resources>

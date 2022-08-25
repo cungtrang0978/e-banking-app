@@ -122,6 +122,7 @@ class RegisterFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 registerResult ?: return@Observer
                 progressLoading.visibility = View.GONE
                 registerResult.success?.let {
+                    Toast.makeText(context, it, Toast.LENGTH_LONG).show()
                     val action =
                         RegisterFragmentDirections.actionRegisterFragmentPopToLoginFragment()
                     findNavController()

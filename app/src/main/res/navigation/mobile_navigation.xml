@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_passbookFragment"
             app:destination="@id/passbookFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_transferSelectionFragment"
+            app:destination="@id/transferSelectionFragment" />
     </fragment>
 
     <fragment
@@ -83,5 +86,27 @@
             android:id="@+id/action_passbookCategoryFragment_to_addPassbookFragment"
             app:destination="@id/addPassbookFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/transferSelectionFragment"
+        android:name="com.example.e_banking_app.ui.transfer.transfer_selection.TransferSelectionFragment"
+        android:label="fragment_transfer_selection"
+        tools:layout="@layout/fragment_transfer_selection" >
+        <action
+            android:id="@+id/action_transferSelectionFragment_to_interbankTransferFragment"
+            app:destination="@id/interbankTransferFragment" />
+        <action
+            android:id="@+id/action_transferSelectionFragment_to_internalTransferFragment"
+            app:destination="@id/internalTransferFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/interbankTransferFragment"
+        android:name="com.example.e_banking_app.ui.transfer.interbank_transfer.InterbankTransferFragment"
+        android:label="fragment_interbank_transfer"
+        tools:layout="@layout/fragment_interbank_transfer" />
+    <fragment
+        android:id="@+id/internalTransferFragment"
+        android:name="com.example.e_banking_app.ui.transfer.internal_transfer.InternalTransferFragment"
+        android:label="fragment_internal_transfer"
+        tools:layout="@layout/fragment_internal_transfer" />
 
 </navigation>

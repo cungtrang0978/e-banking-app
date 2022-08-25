@@ -56,7 +56,7 @@ class RegisterViewModel(
         authRepository.register(
             registerInput,
             onSuccess = {
-                _registerResult.value = RegisterResult(success = "Dang ky thanh cong")
+                _registerResult.value = RegisterResult(success = R.string.register_successfully)
             },
             onFailure = {
                 _registerResult.value = RegisterResult(error = R.string.fail_to_register)

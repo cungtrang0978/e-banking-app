@@ -164,5 +164,5 @@ class AuthDataSource {
         }
     }
 
-    inner class PhoneNumberInput(val phoneNumber: String) : JSONConvertible
+    inner class PhoneNumberInput(val phone: String) : JSONConvertible
 }

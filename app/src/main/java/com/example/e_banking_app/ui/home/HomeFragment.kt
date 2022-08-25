@@ -18,6 +18,8 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private val passbookBtn get() = binding.passbook
+    private val transferBtn get() = binding.transfer
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +44,10 @@ class HomeFragment : Fragment() {
 
         passbookBtn.setOnClickListener {
             val action = HomeFragmentDirections.actionNavigationHomeToPassbookFragment()
+            findNavController().navigate(action)
+        }
+        transferBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionNavigationHomeToTransferSelectionFragment()
             findNavController().navigate(action)
         }
     }

@@ -62,7 +62,6 @@ class InputPasswordFragment : Fragment() {
                 inputPasswordFormState ?: return@Observer
                 nextButton.isEnabled = inputPasswordFormState.isValid
                 inputPasswordFormState.passwordError?.let {
-                    passwordEditText.error = getString(it)
                     confirmPasswordEditText.error = getString(it)
                 }
             })

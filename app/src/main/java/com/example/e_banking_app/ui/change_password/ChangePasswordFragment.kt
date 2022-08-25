@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.e_banking_app.data.factory.UserViewModelFactory
 import com.example.e_banking_app.databinding.FragmentChangePasswordBinding
 
@@ -78,6 +79,7 @@ class ChangePasswordFragment : Fragment() {
                 updateButton.isEnabled = true
                 changePasswordResult.success?.let {
                     Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+                    findNavController().popBackStack()
                 }
 
                 changePasswordResult.error?.let {
