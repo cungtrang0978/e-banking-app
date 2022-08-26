@@ -71,8 +71,7 @@
                 android:id="@+id/edt_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:selectAllOnFocus="true" />
+                    android:selectAllOnFocus="true" />
         </LinearLayout>
 
         <Button

@@ -48,7 +48,7 @@ class ProfileFragment : Fragment() {
         val textView: TextView = binding.name
 
 
-        profileViewModel.fetchProfile(context!!)
+        profileViewModel.fetchProfile()
         profileViewModel.profileState.observe(viewLifecycleOwner) { state ->
             state.success?.let {
                 textView.text = it.name

@@ -6,18 +6,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.e_banking_app.R
 import com.example.e_banking_app.data.repository.UserRepository
-import com.example.e_banking_app.utils.AuthUtils
 
-class ProfileViewModel(private val userRepository: UserRepository) :
-    ViewModel() {
+class ProfileViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     private val _profileState = MutableLiveData<ProfileState>()
     val profileState: LiveData<ProfileState> = _profileState
 
 
-    fun fetchProfile(context: Context) {
+    fun fetchProfile() {
 
-        userRepository.getProfile(AuthUtils.getToken(context),
+        userRepository.getProfile(
             onSuccess = {
                 _profileState.value = ProfileState(success = it)
             },

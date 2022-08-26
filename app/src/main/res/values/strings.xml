@@ -95,4 +95,6 @@
     <string name="invalid_amount">Invalid amount</string>
     <string name="invalid_message">Invalid message</string>
     <string name="prompt_beneficiary_bank">Beneficiary bank</string>
+    <string name="transfer_successfully">Transfer successfully</string>
+    <string name="transfer_failure">Fail to transfer!!</string>
 </resources>

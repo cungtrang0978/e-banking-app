@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".ui.input_otp.InputOtpFragment">
 
 
@@ -17,36 +18,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-        <com.poonam.androidotpview2.OtpView
-            android:id="@+id/otpView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:inputType="number"
-            app:dashColor="@color/end_color_otp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/phone_number"
-            app:lineCount="6"
-
-            app:lineEndColor="@color/start_color_otp"
-            app:lineStartColor="@color/end_color_otp"
-            app:showDash="false" />
-
-
-<!--    <com.gne.www.lib.PinView-->
+<!--    <com.poonam.androidotpview2.OtpView-->
 <!--        android:id="@+id/otpView"-->
-<!--        android:layout_width="match_parent"-->
+<!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        app:inputType="number"-->
-<!--        app:isPassword="false"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:inputType="number"-->
+<!--        app:dashColor="@color/end_color_otp"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="@id/phone_number"-->
-<!--        app:passwordToggleSize="26dp"-->
-<!--        app:pinCount="6"-->
+<!--        app:lineCount="6"-->
+<!--        app:lineEndColor="@color/start_color_otp"-->
+<!--        app:lineStartColor="@color/end_color_otp"-->
+<!--        app:showDash="false" />-->
 
-<!--        app:pinSize="30dp" />-->
+
+    <com.alimuzaffar.lib.pin.PinEntryEditText
+        android:id="@+id/otpView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cursorVisible="false"
+        android:digits="1234567890"
+        android:inputType="number"
+        android:layoutDirection="ltr"
+        android:maxLength="6"
+        android:textIsSelectable="false"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/phone_number"
+        app:pinAnimationType="popIn"
+        app:pinBackgroundIsSquare="true"
+        app:pinCharacterMask="*"
+        app:pinLineStroke="2dp"
+        app:pinLineStrokeSelected="4dp"
+        app:pinTextBottomPadding="4dp" />
+
+    <!--    <com.gne.www.lib.PinView-->
+    <!--        android:id="@+id/otpView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:inputType="number"-->
+    <!--        app:isPassword="false"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/phone_number"-->
+    <!--        app:passwordToggleSize="26dp"-->
+    <!--        app:pinCount="6"-->
+
+    <!--        app:pinSize="30dp" />-->
 
     <Button
         android:id="@+id/verify"
@@ -55,11 +76,10 @@
         android:layout_gravity="start"
         android:enabled="false"
         android:text="@string/action_verify"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otpView"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintTop_toBottomOf="@+id/otpView" />
 
     <Button
         android:id="@+id/resend"
@@ -78,10 +98,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

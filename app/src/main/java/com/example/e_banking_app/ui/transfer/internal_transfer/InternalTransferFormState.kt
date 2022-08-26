@@ -4,4 +4,5 @@ data class InternalTransferFormState(
     val accountNumberError: Int? = null,
     val amountError: Int? = null,
     val messageError: Int? = null,
+    val isValid: Boolean = false,
 )

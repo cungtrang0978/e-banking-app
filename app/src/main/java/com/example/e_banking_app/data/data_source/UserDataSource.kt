@@ -55,12 +55,11 @@ class UserDataSource(private val context: Context) {
     }
 
     fun getProfile(
-        token: String,
         onSuccess: (User) -> Unit,
         onFailure: () -> Unit,
     ) {
         try {
-            request.getProfile(token).enqueue(
+            request.getProfile(AuthUtils.getToken(context)).enqueue(
                 object : Callback<BaseApiResponse<User>> {
                     override fun onResponse(
                         call: Call<BaseApiResponse<User>>,

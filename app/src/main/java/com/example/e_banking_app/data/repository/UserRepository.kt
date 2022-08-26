@@ -14,10 +14,9 @@ class UserRepository(private val dataSource: UserDataSource) {
     }
 
     fun getProfile(
-        token: String,
         onSuccess: (User) -> Unit,
         onFailure: () -> Unit,
     ) {
-        dataSource.getProfile(token, onSuccess, onFailure)
+        dataSource.getProfile(onSuccess, onFailure)
     }
 }

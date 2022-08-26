@@ -58,7 +58,7 @@ class InterbankTransferViewModel(private val transactionRepository: TransactionR
             )
     }
 
-    fun fetchBankList(
+    private fun fetchBankList(
     ) {
         transactionRepository.getAllBankList(
             onSuccess = {
