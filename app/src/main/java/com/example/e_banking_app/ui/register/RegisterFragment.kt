@@ -21,7 +21,7 @@ import com.example.e_banking_app.databinding.FragmentRegisterBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class RegisterFragment : Fragment(), AdapterView.OnItemSelectedListener {
+class RegisterFragment : Fragment() {
 
 
     private lateinit var registerViewModel: RegisterViewModel
@@ -209,6 +209,26 @@ class RegisterFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
                     }
                 }
+                branchSpinner.onItemSelectedListener = object :
+                    AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                    }
+
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        registerViewModel.registerBranchResult.value?.let {
+                            it.success?.let { list ->
+                                branchId = list[position].branchId
+                            }
+                        }
+                    }
+
+                }
                 registerBranchResult.error?.let {
                     Toast.makeText(context, it, Toast.LENGTH_LONG).show()
                 }
@@ -217,15 +237,4 @@ class RegisterFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     }
 
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
-        registerViewModel.registerBranchResult.value?.let {
-            it.success?.let { list ->
-                branchId = list[pos].branchId
-            }
-        }
-    }
-
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-
-    }
 }

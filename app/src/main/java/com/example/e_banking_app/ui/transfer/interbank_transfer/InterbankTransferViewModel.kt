@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.e_banking_app.R
 import com.example.e_banking_app.data.model.bank.Bank
 import com.example.e_banking_app.data.model.input.CheckAccountInput
+import com.example.e_banking_app.data.model.input.InterbankTransferInput
 import com.example.e_banking_app.data.repository.TransactionRepository
 
 class InterbankTransferViewModel(private val transactionRepository: TransactionRepository) :
@@ -21,9 +22,38 @@ class InterbankTransferViewModel(private val transactionRepository: TransactionR
     private val _bankList = MutableLiveData<List<Bank>>()
     val bankList: LiveData<List<Bank>> = _bankList
 
+    private val _interbankTransferResult = MutableLiveData<InterbankTransferResult>()
+    val interbankTransferResult: LiveData<InterbankTransferResult> = _interbankTransferResult
 
     init {
         fetchBankList()
+    }
+
+
+    fun confirm(
+        accountNumber: String,
+        amount: String,
+        message: String,
+        selectedBank: Bank,
+    ) {
+        transactionRepository.createInterbankTransfer(
+            InterbankTransferInput(
+                account_number = accountNumber,
+                money = amount,
+                message = message,
+                id_bank = selectedBank.id_bank
+            ),
+            onSuccess = {
+                _interbankTransferResult.value =
+                    InterbankTransferResult(success = R.string.transfer_successfully)
+
+            },
+            onFailure = {
+                _interbankTransferResult.value =
+                    InterbankTransferResult(error = R.string.transfer_failure)
+
+            },
+        )
     }
 
     fun accountChanged(
@@ -47,6 +77,7 @@ class InterbankTransferViewModel(private val transactionRepository: TransactionR
         amount: String,
         message: String,
     ) {
+        val isValid = accountNumber.isNotBlank() && amount.isNotBlank() && message.isNotBlank()
         _interbankTransferFormState.value =
             InterbankTransferFormState(
                 accountNumberError = if (accountNumber.isBlank())
@@ -55,6 +86,7 @@ class InterbankTransferViewModel(private val transactionRepository: TransactionR
                     R.string.invalid_amount else null,
                 messageError = if (message.isBlank())
                     R.string.invalid_message else null,
+                isValid = isValid
             )
     }
 

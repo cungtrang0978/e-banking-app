@@ -46,8 +46,6 @@ class InternalTransferFragment : Fragment() {
         )[InternalTransferViewModel::class.java]
 
         confirmBtn.setOnClickListener {
-//            loadingProgressBar.visibility = View.VISIBLE
-//            confirmBtn.isEnabled = false
             showBottomSheetDialog()
         }
         return binding.root
