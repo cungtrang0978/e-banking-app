@@ -7,6 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.e_banking_app.utils.ContextUtil
+import com.example.e_banking_app.utils.LanguageUtils
 import java.util.*
 
 
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        LanguageUtils.loadLocale(this)
+
         navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -23,14 +26,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         setupActionBarWithNavController(navController)
 
-        val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("vi")
-// Call this on the main thread as it may require Activity.restart()
-
-
-        val name = ContextUtil.updateLocale(
-            baseContext,
-            Locale("vi")
-        ).baseContext.getString(R.string.title_home)
+//        val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("vi")
+//// Call this on the main thread as it may require Activity.restart()
+//
+//
+//        val name = ContextUtil.updateLocale(
+//            baseContext,
+//            Locale("vi")
+//        ).baseContext.getString(R.string.title_home)
 
 //        createConfigurationContext(config)
 //        resources.updateConfiguration(config, resources.displayMetrics)

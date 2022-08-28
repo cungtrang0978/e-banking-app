@@ -72,8 +72,6 @@
     <string name="fail_to_fetch_profile">Fail to get profile</string>
     <string name="change_language">Change language</string>
     <string name="save">Save</string>
-    <string name="vietnamese">Vietnamese</string>
-    <string name="english">English</string>
     <string name="period">Period</string>
     <string name="promp_amount">Amount</string>
     <string name="month">Months</string>
@@ -110,5 +108,13 @@
     <string name="hotel">Hotel booking</string>
     <string name="cinema">Cinema booking</string>
     <string name="airline_booking">Airline booking</string>
+    <string name="citizen_identity_card">Citizen identity card:</string>
+    <string name="address_info">Address:</string>
+    <string name="phone_info">Phone:</string>
+    <string name="created_at">Created at:</string>
+    <string name="create_card">Create card</string>
+    <string name="create_passbook">Create passbook</string>
+    <string name="info">Information</string>
+    <string name="language">Language</string>
 
 </resources>

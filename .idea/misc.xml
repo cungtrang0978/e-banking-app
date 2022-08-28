@@ -6,6 +6,7 @@
         <entry key="../../Library/Android/sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.1887031408308004" />
         <entry key="../../Library/Android/sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.1887031408308004" />
         <entry key="../../Library/Android/sdk/platforms/android-33/data/res/layout/simple_spinner_dropdown_item.xml" value="0.16193063100710406" />
+        <entry key="app/src/main/res/drawable/profile_bg.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/vertical_divider.xml" value="0.1" />
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.13353413654618473" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.259963768115942" />
@@ -22,6 +23,7 @@
         <entry key="app/src/main/res/layout/fragment_change_password.xml" value="0.3271422541156606" />
         <entry key="app/src/main/res/layout/fragment_forgot_password.xml" value="0.22484134179510426" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.21352313167259787" />
+        <entry key="app/src/main/res/layout/fragment_info.xml" value="0.22972869873046875" />
         <entry key="app/src/main/res/layout/fragment_input_otp.xml" value="0.24241996864219764" />
         <entry key="app/src/main/res/layout/fragment_input_password.xml" value="0.19630192502532928" />
         <entry key="app/src/main/res/layout/fragment_input_phone_number.xml" value="0.25171661376953125" />
@@ -37,7 +39,7 @@
         <entry key="app/src/main/res/layout/fragment_passbook_category_item.xml" value="0.24072265625000003" />
         <entry key="app/src/main/res/layout/fragment_passbook_item.xml" value="0.1102873030583874" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2737045288085938" />
-        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.38734177215189874" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.3523035230352303" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.1887031408308004" />
         <entry key="app/src/main/res/layout/fragment_success_transfer.xml" value="0.19384615384615383" />
         <entry key="app/src/main/res/layout/fragment_transaction_confirmation.xml" value="0.15566234851650648" />

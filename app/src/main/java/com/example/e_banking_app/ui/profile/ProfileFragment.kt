@@ -16,6 +16,7 @@ import com.example.e_banking_app.R
 import com.example.e_banking_app.data.factory.UserViewModelFactory
 import com.example.e_banking_app.databinding.FragmentProfileBinding
 
+
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
@@ -29,6 +30,7 @@ class ProfileFragment : Fragment() {
     private val logoutBtn get() = binding.logout
     private val cardManagementBtn get() = binding.cardManagement
     private val changeLanguageBtn get() = binding.changeLanguage
+    private val infoBtn get() = binding.infoBtn
 
 
     override fun onCreateView(
@@ -53,6 +55,7 @@ class ProfileFragment : Fragment() {
             state.success?.let {
                 textView.text = it.name
             }
+            R.string.citizen_identity_card
 
             state.error?.let {
                 Toast.makeText(context, it, Toast.LENGTH_LONG).show()
@@ -79,7 +82,13 @@ class ProfileFragment : Fragment() {
         }
 
         changeLanguageBtn.setOnClickListener {
+            val action = ProfileFragmentDirections.actionNavigationProfileToLanguageFragment()
+            findNavController().navigate(action)
+        }
 
+        infoBtn.setOnClickListener {
+            val action = ProfileFragmentDirections.actionNavigationProfileToInfoFragment()
+            findNavController().navigate(action)
         }
     }
 

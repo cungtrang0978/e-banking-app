@@ -12,8 +12,10 @@
         android:id="@+id/phone_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:textAlignment="center"
+        android:textColor = "@color/black"
+        android:text= "32132131232"
+        android:textSize= "24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,6 +42,7 @@
         android:layout_height="wrap_content"
         android:cursorVisible="false"
         android:digits="1234567890"
+        android:layout_marginTop="16dp"
         android:inputType="number"
         android:layoutDirection="ltr"
         android:maxLength="6"
@@ -71,7 +74,7 @@
 
     <Button
         android:id="@+id/verify"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:enabled="false"
@@ -83,7 +86,7 @@
 
     <Button
         android:id="@+id/resend"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginTop="16dp"

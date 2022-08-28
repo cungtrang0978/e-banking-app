@@ -72,8 +72,6 @@
     <string name="fail_to_fetch_profile">Đã có lỗi xảy ra!</string>
     <string name="change_language">Đổi ngôn ngữ</string>
     <string name="save">Lưu</string>
-    <string name="vietnamese">Tiếng việt</string>
-    <string name="english">Tiếng anh</string>
     <string name="period">Kỳ hạn</string>
     <string name="promp_amount">Số tiền</string>
     <string name="month">Tháng</string>
@@ -110,5 +108,13 @@
     <string name="hotel">Hotel booking</string>
     <string name="cinema">Cinema booking</string>
     <string name="airline_booking">Airline booking</string>
+    <string name="citizen_identity_card">CCCD/CMND:</string>
+    <string name="address_info">Địa chỉ:</string>
+    <string name="phone_info">Số điện thoại:</string>
+    <string name="created_at">Tạo vào lúc:</string>
+    <string name="create_card">Create card</string>
+    <string name="create_passbook">Create passbook</string>
+    <string name="info">Information</string>
+    <string name="language">Ngôn ngữ</string>
 
 </resources>

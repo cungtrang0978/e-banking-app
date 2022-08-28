@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.e_banking_app.data.data_source.UserDataSource
 import com.example.e_banking_app.data.repository.UserRepository
 import com.example.e_banking_app.ui.change_password.ChangePasswordViewModel
+import com.example.e_banking_app.ui.info.InfoViewModel
 import com.example.e_banking_app.ui.otp.OtpVerificationViewModel
 import com.example.e_banking_app.ui.profile.ProfileViewModel
 
@@ -29,6 +30,10 @@ class UserViewModelFactory(context: Context) : ViewModelProvider.Factory {
             ) as T
         }else if (modelClass.isAssignableFrom(OtpVerificationViewModel::class.java)) {
             return OtpVerificationViewModel(
+                userRepository = userRepository
+            ) as T
+        }else if (modelClass.isAssignableFrom(InfoViewModel::class.java)) {
+            return InfoViewModel(
                 userRepository = userRepository
             ) as T
         }

@@ -35,16 +35,22 @@
         <action
             android:id="@+id/action_navigation_profile_to_cardManagementFragment"
             app:destination="@id/cardManagementFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_languageFragment"
+            app:destination="@id/languageFragment" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.example.e_banking_app.ui.change_password.ChangePasswordFragment"
-        android:label="fragment_change_password"
+        android:label="@string/change_password"
         tools:layout="@layout/fragment_change_password" />
     <fragment
         android:id="@+id/cardManagementFragment"
         android:name="com.example.e_banking_app.ui.card.management.CardManagementFragment"
-        android:label="fragment_card_list"
+        android:label="@string/card_management"
         tools:layout="@layout/fragment_card_management">
         <action
             android:id="@+id/action_cardManagementFragment_to_addCardFragment"
@@ -53,12 +59,12 @@
     <fragment
         android:id="@+id/addCardFragment"
         android:name="com.example.e_banking_app.ui.card.add.AddCardFragment"
-        android:label="fragment_add_card"
+        android:label="@string/create_card"
         tools:layout="@layout/fragment_add_card" />
     <fragment
         android:id="@+id/addPassbookFragment"
         android:name="com.example.e_banking_app.ui.passbook.add.AddPassbookFragment"
-        android:label="fragment_add_passbook"
+        android:label="@string/create_passbook"
         tools:layout="@layout/fragment_add_passbook">
         <action
             android:id="@+id/action_addPassbookFragment_pop_including_passbookFragment"
@@ -70,7 +76,7 @@
     <fragment
         android:id="@+id/passbookFragment"
         android:name="com.example.e_banking_app.ui.passbook.management.PassbookFragment"
-        android:label="fragment_passbook"
+        android:label="@string/passbook"
         tools:layout="@layout/fragment_passbook">
 
         <action
@@ -80,7 +86,7 @@
     <fragment
         android:id="@+id/passbookCategoryFragment"
         android:name="com.example.e_banking_app.ui.passbook.category.PassbookCategoryFragment"
-        android:label="fragment_passbook_category"
+        android:label="@string/passbook"
         tools:layout="@layout/fragment_passbook_category">
         <action
             android:id="@+id/action_passbookCategoryFragment_to_addPassbookFragment"
@@ -89,8 +95,8 @@
     <fragment
         android:id="@+id/transferSelectionFragment"
         android:name="com.example.e_banking_app.ui.transfer.transfer_selection.TransferSelectionFragment"
-        android:label="fragment_transfer_selection"
-        tools:layout="@layout/fragment_transfer_selection" >
+        android:label="@string/transfer"
+        tools:layout="@layout/fragment_transfer_selection">
         <action
             android:id="@+id/action_transferSelectionFragment_to_interbankTransferFragment"
             app:destination="@id/interbankTransferFragment" />
@@ -101,8 +107,8 @@
     <fragment
         android:id="@+id/interbankTransferFragment"
         android:name="com.example.e_banking_app.ui.transfer.interbank_transfer.InterbankTransferFragment"
-        android:label="fragment_interbank_transfer"
-        tools:layout="@layout/fragment_interbank_transfer" >
+        android:label="@string/action_interbank_transfer"
+        tools:layout="@layout/fragment_interbank_transfer">
         <action
             android:id="@+id/action_interbankTransferFragment_to_successTransferFragment"
             app:destination="@id/successTransferFragment" />
@@ -110,8 +116,8 @@
     <fragment
         android:id="@+id/internalTransferFragment"
         android:name="com.example.e_banking_app.ui.transfer.internal_transfer.InternalTransferFragment"
-        android:label="fragment_internal_transfer"
-        tools:layout="@layout/fragment_internal_transfer" >
+        android:label="@string/action_internal_transfer"
+        tools:layout="@layout/fragment_internal_transfer">
         <action
             android:id="@+id/action_internalTransferFragment_to_successTransferFragment"
             app:destination="@id/successTransferFragment" />
@@ -119,8 +125,8 @@
     <fragment
         android:id="@+id/successTransferFragment"
         android:name="com.example.e_banking_app.ui.transfer.success.SuccessTransferFragment"
-        android:label="fragment_success_transfer"
-        tools:layout="@layout/fragment_success_transfer" >
+        android:label="@string/successful_transfer"
+        tools:layout="@layout/fragment_success_transfer">
         <argument
             android:name="transaction"
             app:argType="com.example.e_banking_app.data.model.transaction.Transaction" />
@@ -128,5 +134,15 @@
             android:id="@+id/action_successTransferFragment_to_navigation_home"
             app:popUpTo="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.example.e_banking_app.ui.info.InfoFragment"
+        android:label="@string/info"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.example.e_banking_app.ui.language.LanguageFragment"
+        android:label="@string/language"
+        tools:layout="@layout/fragment_language" />
 
 </navigation>

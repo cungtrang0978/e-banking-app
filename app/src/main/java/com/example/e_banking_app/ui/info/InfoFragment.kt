@@ -1,32 +1,47 @@
 package com.example.e_banking_app.ui.info
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.e_banking_app.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.e_banking_app.data.factory.UserViewModelFactory
+import com.example.e_banking_app.databinding.FragmentInfoBinding
 
 class InfoFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = InfoFragment()
-    }
+    private var _binding: FragmentInfoBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var viewModel: InfoViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_info, container, false)
+    ): View {
+        _binding = FragmentInfoBinding.inflate(inflater, container, false)
+        viewModel =
+            ViewModelProvider(this, UserViewModelFactory(context!!))[InfoViewModel::class.java]
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(InfoViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.infoResult.observe(viewLifecycleOwner) {
+            it ?: return@observe
+
+            it.success?.let { user ->
+                binding.address.text = user.address
+                binding.username.text = user.name
+                binding.mail.text = user.mail
+                binding.phoneNumber.text = user.phone
+                binding.createdAt.text = user.created_at
+                binding.citizenIdentityCard.text = user.citizen_identity_card
+            }
+        }
     }
+
 
 }
