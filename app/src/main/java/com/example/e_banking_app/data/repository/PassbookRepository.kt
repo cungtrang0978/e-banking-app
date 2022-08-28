@@ -101,7 +101,7 @@ class PassbookRepository(private val context: Context) {
                         call: Call<BaseApiResponse<Any>>,
                         response: Response<BaseApiResponse<Any>>
                     ) {
-                        if (response.isSuccessful && response.body()?.query_err == false && response.body()?.result != null) {
+                        if (response.isSuccessful && response.body() != null && response.body()?.query_err == false) {
                             onSuccess()
                         } else {
                             onFailure()

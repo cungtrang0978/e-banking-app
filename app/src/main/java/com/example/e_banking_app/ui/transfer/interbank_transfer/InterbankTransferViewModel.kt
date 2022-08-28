@@ -45,13 +45,11 @@ class InterbankTransferViewModel(private val transactionRepository: TransactionR
             ),
             onSuccess = {
                 _interbankTransferResult.value =
-                    InterbankTransferResult(success = R.string.transfer_successfully)
-
+                    InterbankTransferResult(success = it)
             },
             onFailure = {
                 _interbankTransferResult.value =
                     InterbankTransferResult(error = R.string.transfer_failure)
-
             },
         )
     }
@@ -76,11 +74,14 @@ class InterbankTransferViewModel(private val transactionRepository: TransactionR
         accountNumber: String,
         amount: String,
         message: String,
+        accountName: String,
     ) {
-        val isValid = accountNumber.isNotBlank() && amount.isNotBlank() && message.isNotBlank()
+        val isValid =
+            accountNumber.isNotBlank() && amount.isNotBlank()
+                    && message.isNotBlank() && accountName.isNotBlank()
         _interbankTransferFormState.value =
             InterbankTransferFormState(
-                accountNumberError = if (accountNumber.isBlank())
+                accountNumberError = if (accountNumber.isBlank() || accountName.isBlank())
                     R.string.invalid_account_number else null,
                 amountError = if (amount.isBlank())
                     R.string.invalid_amount else null,

@@ -23,7 +23,7 @@ class ForgotPasswordViewModel(private val authRepository: AuthRepository) : View
                 ForgotPasswordFormState(phoneNumberError = R.string.invalid_phone_number)
         } else if (!isEmailValid(email)) {
             _forgotPasswordFormState.value =
-                ForgotPasswordFormState(phoneNumberError = R.string.invalid_email)
+                ForgotPasswordFormState(mailError = R.string.invalid_email)
         } else if (identityNumber.isBlank()) {
             _forgotPasswordFormState.value =
                 ForgotPasswordFormState(identityNumber = R.string.invalid_identity)

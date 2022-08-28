@@ -29,8 +29,8 @@ class PassbookRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.id
+        holder.idView.text = item.id_passbook
+        holder.contentView.text = item.money
     }
 
     override fun getItemCount(): Int = values.size

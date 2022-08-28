@@ -1,6 +1,7 @@
 package com.example.e_banking_app
 
 import android.os.Bundle
+import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -31,6 +32,7 @@ class MainFlowActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_balance, R.id.navigation_profile
             )
         )
+        R.string.action_back_to_home
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
@@ -38,4 +40,13 @@ class MainFlowActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+//        when (item.itemId) {
+//            android.R.id.home -> {
+//                showDialog() // show your dialog here
+//                true
+//            }
+//            else -> super.onOptionsItemSelected(item)
+//        }
 }

@@ -10,6 +10,7 @@ import com.example.e_banking_app.data.model.input.BillListInput
 import com.example.e_banking_app.data.model.input.CheckAccountInput
 import com.example.e_banking_app.data.model.input.InterbankTransferInput
 import com.example.e_banking_app.data.model.input.InternalTransferInput
+import com.example.e_banking_app.data.model.transaction.Transaction
 import com.example.e_banking_app.utils.AuthUtils
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -21,27 +22,27 @@ class TransactionRepository(private val context: Context) {
 
     fun createInternalTransfer(
         internalTransferInput: InternalTransferInput,
-        onSuccess: () -> Unit,
+        onSuccess: (Transaction) -> Unit,
         onFailure: () -> Unit,
     ) {
         try {
             val body = internalTransferInput.copy(token = AuthUtils.getToken(context)).toJSON()
                 .toRequestBody("application/json".toMediaTypeOrNull())
             request.createInternalTransfer(body).enqueue(
-                object : Callback<BaseApiResponse<Any>> {
+                object : Callback<BaseApiResponse<Transaction>> {
                     override fun onResponse(
-                        call: retrofit2.Call<BaseApiResponse<Any>>,
-                        response: Response<BaseApiResponse<Any>>
+                        call: retrofit2.Call<BaseApiResponse<Transaction>>,
+                        response: Response<BaseApiResponse<Transaction>>
                     ) {
-                        if (response.isSuccessful && response.body()?.query_err == false) {
-                            onSuccess()
+                        if (response.isSuccessful && response.body() != null && response.body()?.query_err == false) {
+                            onSuccess(response.body()!!.result)
                         } else {
                             onFailure()
                         }
                     }
 
                     override fun onFailure(
-                        call: retrofit2.Call<BaseApiResponse<Any>>,
+                        call: retrofit2.Call<BaseApiResponse<Transaction>>,
                         t: Throwable
                     ) {
                         onFailure()
@@ -96,27 +97,27 @@ class TransactionRepository(private val context: Context) {
 
     fun createInterbankTransfer(
         interbankTransferInput: InterbankTransferInput,
-        onSuccess: () -> Unit,
+        onSuccess: (Transaction) -> Unit,
         onFailure: () -> Unit,
     ) {
         try {
             val body = interbankTransferInput.copy(token = AuthUtils.getToken(context)).toJSON()
                 .toRequestBody("application/json".toMediaTypeOrNull())
             request.createInterbankTransfer(body).enqueue(
-                object : Callback<BaseApiResponse<Any>> {
+                object : Callback<BaseApiResponse<Transaction>> {
                     override fun onResponse(
-                        call: retrofit2.Call<BaseApiResponse<Any>>,
-                        response: Response<BaseApiResponse<Any>>
+                        call: retrofit2.Call<BaseApiResponse<Transaction>>,
+                        response: Response<BaseApiResponse<Transaction>>
                     ) {
-                        if (response.isSuccessful && response.body()?.query_err == false) {
-                            onSuccess()
+                        if (response.isSuccessful && response.body() != null && response.body()?.query_err == false) {
+                            onSuccess(response.body()!!.result)
                         } else {
                             onFailure()
                         }
                     }
 
                     override fun onFailure(
-                        call: retrofit2.Call<BaseApiResponse<Any>>,
+                        call: retrofit2.Call<BaseApiResponse<Transaction>>,
                         t: Throwable
                     ) {
                         onFailure()

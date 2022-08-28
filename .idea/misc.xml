@@ -21,11 +21,11 @@
         <entry key="app/src/main/res/layout/fragment_card_management.xml" value="0.17058572039333048" />
         <entry key="app/src/main/res/layout/fragment_change_password.xml" value="0.3271422541156606" />
         <entry key="app/src/main/res/layout/fragment_forgot_password.xml" value="0.22484134179510426" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.26071319580078123" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.21352313167259787" />
         <entry key="app/src/main/res/layout/fragment_input_otp.xml" value="0.24241996864219764" />
         <entry key="app/src/main/res/layout/fragment_input_password.xml" value="0.19630192502532928" />
         <entry key="app/src/main/res/layout/fragment_input_phone_number.xml" value="0.25171661376953125" />
-        <entry key="app/src/main/res/layout/fragment_interbank_transfer.xml" value="0.3642194493664791" />
+        <entry key="app/src/main/res/layout/fragment_interbank_transfer.xml" value="0.33507853403141363" />
         <entry key="app/src/main/res/layout/fragment_internal_transfer.xml" value="0.3914081145584726" />
         <entry key="app/src/main/res/layout/fragment_language.xml" value="0.28755545629407653" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.24748587259432164" />
@@ -39,7 +39,8 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2737045288085938" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.38734177215189874" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.1887031408308004" />
-        <entry key="app/src/main/res/layout/fragment_success_transfer.xml" value="0.15628917676556622" />
+        <entry key="app/src/main/res/layout/fragment_success_transfer.xml" value="0.19384615384615383" />
+        <entry key="app/src/main/res/layout/fragment_transaction_confirmation.xml" value="0.15566234851650648" />
         <entry key="app/src/main/res/layout/fragment_transfer_selection.xml" value="0.21305530371713507" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/xml/locale_config.xml" value="0.19833178869323448" />

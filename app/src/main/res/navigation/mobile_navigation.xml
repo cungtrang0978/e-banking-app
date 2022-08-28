@@ -120,6 +120,13 @@
         android:id="@+id/successTransferFragment"
         android:name="com.example.e_banking_app.ui.transfer.success.SuccessTransferFragment"
         android:label="fragment_success_transfer"
-        tools:layout="@layout/fragment_success_transfer" />
+        tools:layout="@layout/fragment_success_transfer" >
+        <argument
+            android:name="transaction"
+            app:argType="com.example.e_banking_app.data.model.transaction.Transaction" />
+        <action
+            android:id="@+id/action_successTransferFragment_to_navigation_home"
+            app:popUpTo="@id/navigation_home" />
+    </fragment>
 
 </navigation>

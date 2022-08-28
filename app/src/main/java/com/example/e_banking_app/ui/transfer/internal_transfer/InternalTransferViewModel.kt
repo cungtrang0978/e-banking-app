@@ -34,7 +34,7 @@ class InternalTransferViewModel(private val transactionRepository: TransactionRe
             ),
             onSuccess = {
                 _internalTransferResult.value =
-                    InternalTransferResult(success = R.string.transfer_successfully)
+                    InternalTransferResult(success = it)
 
             },
             onFailure = {
@@ -64,12 +64,14 @@ class InternalTransferViewModel(private val transactionRepository: TransactionRe
         accountNumber: String,
         amount: String,
         message: String,
+        accountName: String,
     ) {
-        val isValid = accountNumber.isNotBlank() && amount.isNotBlank() && message.isNotBlank()
-
+        val isValid = accountNumber.isNotBlank()
+                && amount.isNotBlank() && message.isNotBlank()
+                && accountName.isNotBlank()
         _internalTransferFormState.value =
             InternalTransferFormState(
-                accountNumberError = if (accountNumber.isBlank())
+                accountNumberError = if (accountNumber.isBlank() || accountName.isBlank())
                     R.string.invalid_account_number else null,
                 amountError = if (amount.isBlank())
                     R.string.invalid_amount else null,

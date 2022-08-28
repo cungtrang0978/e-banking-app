@@ -97,5 +97,18 @@
     <string name="prompt_beneficiary_bank">Beneficiary bank</string>
     <string name="transfer_successfully">Transfer successfully</string>
     <string name="transfer_failure">Fail to transfer!!</string>
+    <string name="successful_transfer">Chuyển khoản thành công</string>
+    <string name="successful_transfer_message">Giao dịch được gửi qua hệ thốgn chuyển tiền liên ngân hàng của NHNN. Thời gian người hưởng nhận được tiền phụ thuộc vào thời gian xử lý của hệ thống chuyển tiền liên ngân hàng và của ngân hàng hưởng</string>
+    <string name="receiver_name">Receiver name</string>
+    <string name="beneficiary_bank">Beneficiary bank</string>
+    <string name="transaction_code">Transaction code</string>
+    <string name="transfer_message">Transfer content</string>
+    <string name="action_back_to_home">Back to home</string>
+    <string name="bill_payment">Thanh toán hoá đơn</string>
+    <string name="topup">Topup</string>
+    <string name="gift">Gift</string>
+    <string name="hotel">Hotel booking</string>
+    <string name="cinema">Cinema booking</string>
+    <string name="airline_booking">Airline booking</string>
 
 </resources>

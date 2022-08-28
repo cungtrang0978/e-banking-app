@@ -1,21 +1,18 @@
 package com.example.e_banking_app.ui.transfer.interbank_transfer
 
-import android.R
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.alimuzaffar.lib.pin.PinEntryEditText
+import com.example.e_banking_app.R
 import com.example.e_banking_app.data.factory.TransactionViewModelFactory
 import com.example.e_banking_app.data.factory.UserViewModelFactory
 import com.example.e_banking_app.data.model.bank.Bank
@@ -87,6 +84,8 @@ class InterbankTransferFragment : Fragment() {
                 state.error?.let {
                     txtAccountName.text = ""
                 }
+
+                onChanged()
             })
 
         viewModel.bankList.observe(viewLifecycleOwner,
@@ -97,10 +96,10 @@ class InterbankTransferFragment : Fragment() {
                 context?.let {
                     val spinnerArrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
                         it,
-                        R.layout.simple_spinner_item,
+                        android.R.layout.simple_spinner_item,
                         list.map { bank -> bank.name_bank }
                     )
-                    spinnerArrayAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+                    spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     beneficiaryBankSpinner.adapter = spinnerArrayAdapter
                     beneficiaryBankSpinner.onItemSelectedListener =
                         object : AdapterView.OnItemSelectedListener {
@@ -134,14 +133,17 @@ class InterbankTransferFragment : Fragment() {
             state.success?.let {
                 Toast.makeText(
                     context,
-                    it,
+                    R.string.transfer_successfully,
                     Toast.LENGTH_LONG
                 ).show()
 
                 val action =
-                    InterbankTransferFragmentDirections.actionInterbankTransferFragmentToSuccessTransferFragment()
+                    InterbankTransferFragmentDirections.actionInterbankTransferFragmentToSuccessTransferFragment(
+                        it
+                    )
                 findNavController().navigate(action)
             }
+
             state.error?.let {
                 Toast.makeText(
                     context,
@@ -163,12 +165,17 @@ class InterbankTransferFragment : Fragment() {
         }
 
         override fun afterTextChanged(s: Editable) {
-            viewModel.dataChanged(
-                edtRecipientAccountNumber.text.toString(),
-                edtAmount.text.toString(),
-                edtMessage.text.toString(),
-            )
+            onChanged()
         }
+    }
+
+    private fun onChanged() {
+        viewModel.dataChanged(
+            edtRecipientAccountNumber.text.toString(),
+            edtAmount.text.toString(),
+            edtMessage.text.toString(),
+            txtAccountName.text.toString(),
+        )
     }
 
     private val afterAccountTextChangedListener = object : TextWatcher {
@@ -204,17 +211,16 @@ class InterbankTransferFragment : Fragment() {
             otpVerificationViewModel.sendVerificationCode(activity)
             val dialog = BottomSheetDialog(context)
 
-            dialog.setContentView(com.example.e_banking_app.R.layout.fragment_otp_bottom_sheet)
+            dialog.setContentView(R.layout.fragment_otp_bottom_sheet)
 //            val _binding: FragmentOtpBottomSheetBinding =
 //                FragmentOtpBottomSheetBinding.inflate(layoutInflater)
 
             val otpView =
                 dialog.findViewById<PinEntryEditText>(com.example.e_banking_app.R.id.otpView)
-            val verifyBtn = dialog.findViewById<Button>(com.example.e_banking_app.R.id.verify)
+            val verifyBtn = dialog.findViewById<Button>(R.id.verify)
+            val loading = dialog.findViewById<ProgressBar>(com.example.e_banking_app.R.id.loading)
 
             fun onSuccess(inputOtpState: InputOtpState) {
-
-                val appContext = context.applicationContext ?: return
                 if (inputOtpState.codeSent) {
                     if (inputOtpState.isVerified) {
                         dialog.dismiss()
@@ -223,8 +229,8 @@ class InterbankTransferFragment : Fragment() {
 
                     } else {
                         Toast.makeText(
-                            appContext,
-                            com.example.e_banking_app.R.string.message_code_sent_already,
+                            context,
+                            R.string.message_code_sent_already,
                             Toast.LENGTH_LONG
                         ).show()
 
@@ -236,7 +242,8 @@ class InterbankTransferFragment : Fragment() {
             otpVerificationViewModel.inputOtpResult.observe(viewLifecycleOwner,
                 Observer { inputOtpResult ->
                     inputOtpResult ?: return@Observer
-//                    loadingProgressBar.visibility = View.GONE
+                    loading?.visibility = View.GONE
+
                     inputOtpResult.error?.let {
 //                        onFailure(errorTextId = it)
                         Toast.makeText(context, it, Toast.LENGTH_LONG)
@@ -284,7 +291,7 @@ class InterbankTransferFragment : Fragment() {
             }
 
             fun onInit() {
-//                loadingProgressBar.visibility = View.VISIBLE
+                loading?.visibility = View.VISIBLE
                 otpVerificationViewModel.sendVerificationCode(
                     activity = activity
                 )
@@ -294,8 +301,6 @@ class InterbankTransferFragment : Fragment() {
 
             dialog.show()
         }
-
-
     }
 
 

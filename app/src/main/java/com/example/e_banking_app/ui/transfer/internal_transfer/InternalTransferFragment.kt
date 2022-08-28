@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -85,6 +86,7 @@ class InternalTransferFragment : Fragment() {
                 state.error?.let {
                     txtAccountName.text = ""
                 }
+                onChanged()
             })
 
         internalTransferViewModel.internalTransferResult.observe(
@@ -97,12 +99,14 @@ class InternalTransferFragment : Fragment() {
                 state.success?.let {
                     Toast.makeText(
                         context,
-                        it,
+                        R.string.transfer_successfully,
                         Toast.LENGTH_LONG
                     ).show()
 
                     val action =
-                        InternalTransferFragmentDirections.actionInternalTransferFragmentToSuccessTransferFragment()
+                        InternalTransferFragmentDirections.actionInternalTransferFragmentToSuccessTransferFragment(
+                            it
+                        )
                     findNavController().navigate(action)
                 }
                 state.error?.let {
@@ -127,12 +131,17 @@ class InternalTransferFragment : Fragment() {
         }
 
         override fun afterTextChanged(s: Editable) {
-            internalTransferViewModel.dataChanged(
-                edtRecipientAccountNumber.text.toString(),
-                edtAmount.text.toString(),
-                edtMessage.text.toString(),
-            )
+            onChanged()
         }
+    }
+
+    private fun onChanged(){
+        internalTransferViewModel.dataChanged(
+            edtRecipientAccountNumber.text.toString(),
+            edtAmount.text.toString(),
+            edtMessage.text.toString(),
+            txtAccountName.text.toString(),
+            )
     }
 
     private fun showBottomSheetDialog() {
@@ -153,10 +162,9 @@ class InternalTransferFragment : Fragment() {
 
             val otpView = dialog.findViewById<PinEntryEditText>(R.id.otpView)
             val verifyBtn = dialog.findViewById<Button>(R.id.verify)
+            val loading = dialog.findViewById<ProgressBar>(com.example.e_banking_app.R.id.loading)
 
             fun onSuccess(inputOtpState: InputOtpState) {
-
-                val appContext = context.applicationContext ?: return
                 if (inputOtpState.codeSent) {
                     if (inputOtpState.isVerified) {
                         dialog.dismiss()
@@ -165,7 +173,7 @@ class InternalTransferFragment : Fragment() {
 
                     } else {
                         Toast.makeText(
-                            appContext,
+                            context,
                             R.string.message_code_sent_already,
                             Toast.LENGTH_LONG
                         ).show()
@@ -178,7 +186,7 @@ class InternalTransferFragment : Fragment() {
             otpVerificationViewModel.inputOtpResult.observe(viewLifecycleOwner,
                 Observer { inputOtpResult ->
                     inputOtpResult ?: return@Observer
-//                    loadingProgressBar.visibility = View.GONE
+                    loading?.visibility = View.GONE
                     inputOtpResult.error?.let {
 //                        onFailure(errorTextId = it)
                         Toast.makeText(context, it, Toast.LENGTH_LONG)
@@ -226,7 +234,7 @@ class InternalTransferFragment : Fragment() {
             }
 
             fun onInit() {
-//                loadingProgressBar.visibility = View.VISIBLE
+                loading?.visibility = View.VISIBLE
                 otpVerificationViewModel.sendVerificationCode(
                     activity = activity
                 )
