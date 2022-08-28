@@ -85,7 +85,7 @@
     <string name="fail_to_send_forgot_password_mail">Fail to send forgot password mail</string>
     <string name="register_successfully">Register successfully</string>
     <string name="action_internal_transfer">Internal transfer</string>
-    <string name="action_interbank_transfer">Interbank transfer</string>
+    <string name="action_interbank_transfer">External transfer</string>
     <string name="recipient_account_number">Recipient account number</string>
     <string name="prompt_message">Message</string>
     <string name="action_confirm">Confirm</string>
@@ -116,5 +116,8 @@
     <string name="create_passbook">Create passbook</string>
     <string name="info">Information</string>
     <string name="language">Language</string>
+    <string name="passbook_name">Passbook name</string>
+    <string name="passbook_period">Passbook period</string>
+    <string name="passbook_interest">Passbook interest</string>
 
 </resources>

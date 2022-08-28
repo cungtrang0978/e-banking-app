@@ -22,7 +22,7 @@ class MainFlowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        LanguageUtils.loadLocale(this)
+//        LanguageUtils.loadLocale(this)
 
 
         binding = ActivityMainFlowBinding.inflate(layoutInflater)
