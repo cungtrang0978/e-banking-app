@@ -3,10 +3,7 @@ package com.example.e_banking_app.data.api
 import com.example.e_banking_app.data.model.BaseApiResponse
 import com.example.e_banking_app.data.model.user.User
 import okhttp3.RequestBody
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.PUT
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface UserApi {
     @PUT("customers/changePassword/{token}")

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.e_banking_app.R
 import com.example.e_banking_app.databinding.FragmentLanguageBinding
 import com.example.e_banking_app.utils.LanguageUtils
 
@@ -38,7 +39,7 @@ class LanguageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        R.string.account_balance
         saveBtn.setOnClickListener {
             activity?.let { it1 ->
                 val lang = if (rdVi.isChecked) "vi" else "en"

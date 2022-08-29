@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_navigation_profile_to_languageFragment"
             app:destination="@id/languageFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_checkBalanceFragment"
+            app:destination="@id/checkBalanceFragment" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
@@ -144,5 +147,10 @@
         android:name="com.example.e_banking_app.ui.language.LanguageFragment"
         android:label="@string/language"
         tools:layout="@layout/fragment_language" />
+    <fragment
+        android:id="@+id/checkBalanceFragment"
+        android:name="com.example.e_banking_app.ui.check_balance.CheckBalanceFragment"
+        android:label="@string/check_balance"
+        tools:layout="@layout/fragment_check_balance" />
 
 </navigation>

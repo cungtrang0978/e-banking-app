@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.e_banking_app.data.model.passbook.Passbook
 import com.example.e_banking_app.databinding.FragmentPassbookItemBinding
+import com.example.e_banking_app.utils.CurrencyUtils
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
@@ -29,20 +30,21 @@ class PassbookRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id_passbook
-        holder.contentView.text = item.money
+        holder.id.text = item.id_passbook
+        holder.name.text = item.name
+        holder.interest.text = item.interest
+        holder.amount.text = CurrencyUtils.format(item.money)
     }
 
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(binding: FragmentPassbookItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
+        val id: TextView = binding.id
+        val name: TextView = binding.passbookName
+        val interest: TextView = binding.passbookInterest
+        val amount: TextView = binding.amount
 
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
-        }
     }
 
 }

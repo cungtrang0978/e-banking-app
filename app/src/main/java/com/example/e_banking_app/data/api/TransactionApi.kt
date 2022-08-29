@@ -29,6 +29,10 @@ interface TransactionApi {
     fun getAllBankList(
     ): retrofit2.Call<BaseApiResponse<List<Bank>>>
 
+    @GET("Transactions")
+    fun getBalanceList(
+    ): retrofit2.Call<BaseApiResponse<List<Transaction>>>
+
     @POST("Bills")
     fun getBillUnpaid(
         @Body requestBody: RequestBody,

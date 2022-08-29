@@ -165,6 +165,39 @@ class TransactionRepository(private val context: Context) {
             onFailure()
         }
     }
+    fun getBalanceList(
+        onSuccess: (List<Transaction>) -> Unit,
+        onFailure: () -> Unit
+    ) {
+        try {
+
+            request.getBalanceList().enqueue(
+                object : Callback<BaseApiResponse<List<Transaction>>> {
+                    override fun onResponse(
+                        call: retrofit2.Call<BaseApiResponse<List<Transaction>>>,
+                        response: Response<BaseApiResponse<List<Transaction>>>
+                    ) {
+                        if (response.isSuccessful && response.body() != null && response.body()?.query_err == false) {
+                            onSuccess(response.body()!!.result)
+                        } else {
+                            onFailure()
+                        }
+                    }
+
+                    override fun onFailure(
+                        call: retrofit2.Call<BaseApiResponse<List<Transaction>>>,
+                        t: Throwable
+                    ) {
+                        onFailure()
+                    }
+
+                }
+            )
+        } catch (e: Throwable) {
+            Log.d("getBalanceList: ", e.toString())
+            onFailure()
+        }
+    }
 
     fun getBillUnpaid(
         billListInput: BillListInput,

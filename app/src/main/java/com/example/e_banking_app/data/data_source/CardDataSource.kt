@@ -65,7 +65,6 @@ class CardDataSource {
                             onSuccess(response.body()!!.result)
                         } else {
                             onFailure()
-                            R.string.passbook_interest
                         }
                     }
 

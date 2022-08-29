@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/inputPhoneNumberFragment"
         android:name="com.example.e_banking_app.ui.input_phone_number.InputPhoneNumberFragment"
-        android:label="Register with phone number"
+        android:label="@string/register_with_phone_number"
         tools:layout="@layout/fragment_input_phone_number">
         <action
             android:id="@+id/action_inputPhoneNumberFragment_to_inputOtpFragment"
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/inputOtpFragment"
         android:name="com.example.e_banking_app.ui.input_otp.InputOtpFragment"
-        android:label="Verify phone number"
+        android:label="@string/verify_phone_number"
         tools:layout="@layout/fragment_input_otp">
         <action
             android:id="@+id/action_inputOtpFragment_to_inputPasswordFragment"
@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.e_banking_app.ui.register.RegisterFragment"
-        android:label="Register"
+        android:label="@string/register"
         tools:layout="@layout/fragment_register">
 
         <argument
@@ -60,7 +60,7 @@
     <fragment
         android:id="@+id/inputPasswordFragment"
         android:name="com.example.e_banking_app.ui.input_password.InputPasswordFragment"
-        android:label="Input password"
+        android:label="@string/input_password"
         tools:layout="@layout/fragment_input_password">
         <action
             android:id="@+id/action_inputPasswordFragment_to_registerFragment"
@@ -83,7 +83,7 @@
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.example.e_banking_app.ui.forgot_password.ForgotPasswordFragment"
-        android:label="Forgot password"
+        android:label="@string/action_forgot_password"
         tools:layout="@layout/fragment_forgot_password" />
 
 

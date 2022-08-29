@@ -90,6 +90,11 @@ class ProfileFragment : Fragment() {
             val action = ProfileFragmentDirections.actionNavigationProfileToInfoFragment()
             findNavController().navigate(action)
         }
+
+        checkBalanceBtn.setOnClickListener {
+            val action = ProfileFragmentDirections.actionNavigationProfileToCheckBalanceFragment()
+            findNavController().navigate(action)
+        }
     }
 
     private fun logout() {

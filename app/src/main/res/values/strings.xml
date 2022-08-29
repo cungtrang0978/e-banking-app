@@ -121,4 +121,12 @@
     <string name="passbook_name">Passbook name</string>
     <string name="passbook_period">Passbook period</string>
     <string name="passbook_interest">Passbook interest</string>
+    <string name="input_password">Input password</string>
+    <string name="register">Register</string>
+    <string name="verify_phone_number">Verify phone number</string>
+    <string name="register_with_phone_number">Register with phone number</string>
+    <string name="id" translatable="false">ID</string>
+    <string name="account_balance">Account balance</string>
+    <string name="account_number">Account number:</string>
+    <string name="fail_to_fetch_balance">Fail to fetch balance</string>
 </resources>

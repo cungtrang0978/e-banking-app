@@ -119,5 +119,12 @@
     <string name="passbook_name">Tên gói</string>
     <string name="passbook_period">Kì hạn</string>
     <string name="passbook_interest">Lãi suất</string>
+    <string name="input_password">Nhập mật khẩu</string>
+    <string name="register">Đăng ký</string>
+    <string name="verify_phone_number">Xác nhận số điện thoại</string>
+    <string name="register_with_phone_number">Đăng nhập bằng số điện thoại</string>
+    <string name="account_balance">Số dư còn</string>
+    <string name="account_number">Số tài khoản:</string>
+    <string name="fail_to_fetch_balance">Fail to fetch balance</string>
 
 </resources>

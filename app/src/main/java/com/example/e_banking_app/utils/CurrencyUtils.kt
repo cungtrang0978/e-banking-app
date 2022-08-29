@@ -10,7 +10,7 @@ class CurrencyUtils {
             format.maximumFractionDigits = 0
             format.currency = Currency.getInstance("VND")
 
-            return format.format(Integer.parseInt(amount))
+            return format.format(amount.toLongOrNull() ?: 0)
         }
     }
 }

@@ -33,6 +33,7 @@ class InfoFragment : Fragment() {
             it ?: return@observe
 
             it.success?.let { user ->
+                binding.id.text = user.id_person
                 binding.address.text = user.address
                 binding.username.text = user.name
                 binding.mail.text = user.mail
