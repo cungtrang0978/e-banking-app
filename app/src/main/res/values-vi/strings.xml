@@ -125,6 +125,11 @@
     <string name="register_with_phone_number">Đăng nhập bằng số điện thoại</string>
     <string name="account_balance">Số dư còn</string>
     <string name="account_number">Số tài khoản:</string>
-    <string name="fail_to_fetch_balance">Fail to fetch balance</string>
+    <string name="fail_to_fetch_balance">Đã có lỗi xảy ra. Vui lòng thử lại sau</string>
+    <string name="account_number_sc">TK:</string>
+    <string name="transaction_amount_sc">GD:</string>
+    <string name="current_balance_sc">SDC:</string>
+    <string name="transaction_content">ND:</string>
+    <string name="select_branch">Chi nhánh</string>
 
 </resources>

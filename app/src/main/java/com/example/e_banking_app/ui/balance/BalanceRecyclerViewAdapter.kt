@@ -30,20 +30,21 @@ class BalanceRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id_tranfer
-        holder.contentView.text = item.message
+        holder.createdAt.text = item.time_tranfer
+        holder.accountNumber.text = item.from_account_number_customer
+        holder.amount.text = item.money
+        holder.content.text = item.message
     }
 
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(binding: FragmentBalanceItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
+        val createdAt: TextView = binding.createdAt
+        val accountNumber: TextView = binding.accountNumber
+        val amount: TextView = binding.amount
+        val content: TextView = binding.transactionContent
 
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
-        }
     }
 
 }

@@ -78,7 +78,7 @@ class AuthDataSource {
                         response: Response<BaseApiResponse<Any>>
                     ) {
                         if (response.isSuccessful && response.body()?.query_err == false) {
-                            onSuccess()
+                                onSuccess()
                         } else {
                             onFailure()
                         }

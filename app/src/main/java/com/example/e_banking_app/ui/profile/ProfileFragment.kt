@@ -26,7 +26,7 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val changePasswordBtn get() = binding.changePassword
-    val checkBalanceBtn get() = binding.checkAccount
+    private val checkBalanceBtn get() = binding.checkAccount
     private val logoutBtn get() = binding.logout
     private val cardManagementBtn get() = binding.cardManagement
     private val changeLanguageBtn get() = binding.changeLanguage

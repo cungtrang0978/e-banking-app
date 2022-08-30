@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.e_banking_app.R
 import com.example.e_banking_app.data.model.passbook.Passbook
 import com.example.e_banking_app.databinding.FragmentPassbookItemBinding
 import com.example.e_banking_app.utils.CurrencyUtils

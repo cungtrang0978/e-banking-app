@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.e_banking_app.R
 import com.example.e_banking_app.data.factory.TransactionViewModelFactory
 import com.example.e_banking_app.databinding.FragmentBalanceBinding
 
