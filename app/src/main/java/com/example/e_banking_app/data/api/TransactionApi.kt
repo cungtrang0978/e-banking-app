@@ -1,12 +1,14 @@
 package com.example.e_banking_app.data.api
 
 import com.example.e_banking_app.data.model.BaseApiResponse
+import com.example.e_banking_app.data.model.balance.BalanceItem
 import com.example.e_banking_app.data.model.bank.Bank
 import com.example.e_banking_app.data.model.transaction.Transaction
 import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface TransactionApi {
     @POST("Transactions/InternalTranfer")
@@ -29,9 +31,10 @@ interface TransactionApi {
     fun getAllBankList(
     ): retrofit2.Call<BaseApiResponse<List<Bank>>>
 
-    @GET("Transactions")
+    @GET("Histories/{token}")
     fun getBalanceList(
-    ): retrofit2.Call<BaseApiResponse<List<Transaction>>>
+        @Path("token") token: String,
+    ): retrofit2.Call<BaseApiResponse<List<BalanceItem>>>
 
     @POST("Bills")
     fun getBillUnpaid(

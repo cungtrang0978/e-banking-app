@@ -5,6 +5,7 @@ import android.util.Log
 import com.example.e_banking_app.data.api.ServiceBuilder
 import com.example.e_banking_app.data.api.TransactionApi
 import com.example.e_banking_app.data.model.BaseApiResponse
+import com.example.e_banking_app.data.model.balance.BalanceItem
 import com.example.e_banking_app.data.model.bank.Bank
 import com.example.e_banking_app.data.model.input.BillListInput
 import com.example.e_banking_app.data.model.input.CheckAccountInput
@@ -165,17 +166,18 @@ class TransactionRepository(private val context: Context) {
             onFailure()
         }
     }
+
     fun getBalanceList(
-        onSuccess: (List<Transaction>) -> Unit,
+        onSuccess: (List<BalanceItem>) -> Unit,
         onFailure: () -> Unit
     ) {
         try {
 
-            request.getBalanceList().enqueue(
-                object : Callback<BaseApiResponse<List<Transaction>>> {
+            request.getBalanceList(AuthUtils.getToken(context)).enqueue(
+                object : Callback<BaseApiResponse<List<BalanceItem>>> {
                     override fun onResponse(
-                        call: retrofit2.Call<BaseApiResponse<List<Transaction>>>,
-                        response: Response<BaseApiResponse<List<Transaction>>>
+                        call: retrofit2.Call<BaseApiResponse<List<BalanceItem>>>,
+                        response: Response<BaseApiResponse<List<BalanceItem>>>
                     ) {
                         if (response.isSuccessful && response.body() != null && response.body()?.query_err == false) {
                             onSuccess(response.body()!!.result)
@@ -185,7 +187,7 @@ class TransactionRepository(private val context: Context) {
                     }
 
                     override fun onFailure(
-                        call: retrofit2.Call<BaseApiResponse<List<Transaction>>>,
+                        call: retrofit2.Call<BaseApiResponse<List<BalanceItem>>>,
                         t: Throwable
                     ) {
                         onFailure()

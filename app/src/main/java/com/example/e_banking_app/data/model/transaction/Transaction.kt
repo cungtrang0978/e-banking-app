@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 data class Transaction(
     val to_name_customer: String,
     val to_account_number_customer: String,
-    val from_account_number_customer: String = "",
+    val from_account_number_customer: String? = null,
     val id_tranfer: String,
     val money: String,
     val time_tranfer: String,
