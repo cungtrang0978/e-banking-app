@@ -76,10 +76,10 @@ class BillDetailFragment : Fragment() {
             payBtn.isEnabled = true
 
             result.success?.let {
+                findNavController().popBackStack()
                 Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             }
             result.error?.let {
-                findNavController().popBackStack()
                 Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             }
         }

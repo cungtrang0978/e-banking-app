@@ -36,9 +36,6 @@ class PassbookRecyclerViewAdapter(
         holder.name.text = item.name_passbook
         holder.interest.text = item.interest_rate+"%"
         holder.amount.text = CurrencyUtils.format(item.money)
-        holder.withdrawBtn.setOnClickListener {
-
-        }
     }
 
     override fun getItemCount(): Int = values.size

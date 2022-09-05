@@ -53,7 +53,14 @@ class PassbookFragment : Fragment() {
                 result ?: return@Observer
                 loading.visibility = View.GONE
                 result.success?.let {
-                    rcvPassbook.adapter = PassbookRecyclerViewAdapter(it)
+                    rcvPassbook.adapter = PassbookRecyclerViewAdapter(
+                        it,
+                        onWithdrawClick = { passbook ->
+                            loading.visibility = View.VISIBLE
+                            viewModel.withdrawPassbook(passbook)
+                        },
+
+                        )
                 }
                 result.error?.let {
                     Toast.makeText(context?.applicationContext, it, Toast.LENGTH_LONG).show()
@@ -61,6 +68,18 @@ class PassbookFragment : Fragment() {
 
             }
         )
+
+        viewModel.withdrawResult.observe(viewLifecycleOwner) { result ->
+            result ?: return@observe
+            loading.visibility = View.GONE
+            result.success?.let {
+                Toast.makeText(context?.applicationContext, it, Toast.LENGTH_LONG).show()
+                viewModel.fetchPassbookList()
+            }
+            result.error?.let {
+                Toast.makeText(context?.applicationContext, it, Toast.LENGTH_LONG).show()
+            }
+        }
 
         addPassBookBtn.setOnClickListener {
             val action =

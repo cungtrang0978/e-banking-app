@@ -143,5 +143,7 @@
     <string name="pay_successfully">Pay successfully</string>
     <string name="pay_fail">Fail to pay</string>
     <string name="withdraw">Withdraw</string>
+    <string name="withdraw_successfully">Withdraw successfully</string>
+    <string name="fail_to_withdraw">Fail to withdraw</string>
 
 </resources>

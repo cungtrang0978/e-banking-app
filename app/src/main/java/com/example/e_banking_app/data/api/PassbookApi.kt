@@ -21,4 +21,10 @@ interface PassbookApi {
     @POST("passbooks")
     fun addPassbook(@Body requestBody: RequestBody ):
             retrofit2.Call<BaseApiResponse<Any>>
+
+    @POST("passbooks/check")
+    fun withdraw(
+        @Body requestBody: RequestBody,
+    ): retrofit2.Call<BaseApiResponse<Any>>
+
 }

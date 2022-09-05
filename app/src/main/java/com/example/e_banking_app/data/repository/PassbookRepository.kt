@@ -6,6 +6,7 @@ import com.example.e_banking_app.data.api.PassbookApi
 import com.example.e_banking_app.data.api.ServiceBuilder
 import com.example.e_banking_app.data.model.BaseApiResponse
 import com.example.e_banking_app.data.model.input.PassbookInput
+import com.example.e_banking_app.data.model.input.WithdrawPassbookInput
 import com.example.e_banking_app.data.model.passbook.Passbook
 import com.example.e_banking_app.data.model.passbook.PassbookCategory
 import com.example.e_banking_app.utils.AuthUtils
@@ -96,6 +97,44 @@ class PassbookRepository(private val context: Context) {
             val requestBody =
                 newPassbookInput.toJSON().toRequestBody("application/json".toMediaTypeOrNull())
             request.addPassbook(requestBody).enqueue(
+                object : Callback<BaseApiResponse<Any>> {
+                    override fun onResponse(
+                        call: Call<BaseApiResponse<Any>>,
+                        response: Response<BaseApiResponse<Any>>
+                    ) {
+                        if (response.isSuccessful && response.body() != null && response.body()?.query_err == false) {
+                            onSuccess()
+                        } else {
+                            onFailure()
+                        }
+                    }
+
+                    override fun onFailure(
+                        call: Call<BaseApiResponse<Any>>,
+                        t: Throwable
+                    ) {
+                        onFailure()
+                    }
+
+                },
+            )
+
+        } catch (e: Throwable) {
+            Log.d("addPassbook: ", e.toString())
+            onFailure()
+        }
+    }
+
+    fun withdraw(
+        withdrawPassbookInput: WithdrawPassbookInput,
+        onSuccess: () -> Unit,
+        onFailure: () -> Unit,
+    ) {
+        try {
+            val newPassbookInput = withdrawPassbookInput.copy(token = AuthUtils.getToken(context))
+            val requestBody =
+                newPassbookInput.toJSON().toRequestBody("application/json".toMediaTypeOrNull())
+            request.withdraw(requestBody).enqueue(
                 object : Callback<BaseApiResponse<Any>> {
                     override fun onResponse(
                         call: Call<BaseApiResponse<Any>>,
