@@ -74,5 +74,8 @@ class PassbookFragment : Fragment() {
         viewModel.fetchPassbookList()
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

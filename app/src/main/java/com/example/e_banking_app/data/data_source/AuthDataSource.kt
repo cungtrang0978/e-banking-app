@@ -1,6 +1,7 @@
 package com.example.e_banking_app.data.data_source
 
 import android.util.Log
+import com.example.e_banking_app.R
 import com.example.e_banking_app.data.api.AuthApi
 import com.example.e_banking_app.data.api.ServiceBuilder
 import com.example.e_banking_app.data.model.BaseApiResponse
@@ -115,6 +116,7 @@ class AuthDataSource {
                             onSuccess(response.body()!!.result)
                         } else {
                             onFailure()
+                            R.string.bill_amount
                         }
                     }
 

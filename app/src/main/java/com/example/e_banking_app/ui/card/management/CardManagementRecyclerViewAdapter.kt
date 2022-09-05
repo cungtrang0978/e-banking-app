@@ -2,11 +2,11 @@ package com.example.e_banking_app.ui.card.management
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.e_banking_app.data.model.card.Card
 import com.example.e_banking_app.databinding.FragmentCardItemBinding
 import com.maxpilotto.creditcardview.CreditCardView
+import java.time.LocalDate
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
@@ -30,15 +30,21 @@ class CardManagementRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.card.number = item.id_card
-        holder.card.expiry = "item.expired_at"
-        holder.card.holder = "name"
+
+        val expired: LocalDate = LocalDate.parse(item.expired_at)
+
+        holder.card.expiry = formatNumber(expired.dayOfMonth) + formatNumber(expired.monthValue)
+        holder.card.holder = item.name
     }
+
+    private fun formatNumber(num: Int): String =
+        if (num / 10 > 0) num.toString() else "0$num"
 
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(binding: FragmentCardItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val card : CreditCardView = binding.card
+        val card: CreditCardView = binding.card
 
 
         override fun toString(): String {

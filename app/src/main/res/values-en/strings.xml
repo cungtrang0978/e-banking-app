@@ -131,5 +131,17 @@
     <string name="current_balance_sc">Current balance:</string>
     <string name="transaction_content">Transaction content:</string>
     <string name="select_branch">Select branch</string>
+    <string name="bill_name">Bill name:</string>
+    <string name="bill_unit">Unit:</string>
+    <string name="bill_status">Bill status:</string>
+    <string name="bill_amount">Amount:</string>
+    <string name="fail_to_fetch_bill_list">Fail to fetch bills</string>
+    <string name="unpaid">Unpaid</string>
+    <string name="paid">Paid</string>
+    <string name="bill_detail">Bill detail</string>
+    <string name="pay">Pay</string>
+    <string name="pay_successfully">Pay successfully</string>
+    <string name="pay_fail">Fail to pay</string>
+    <string name="withdraw">Withdraw</string>
 
 </resources>

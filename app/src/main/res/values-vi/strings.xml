@@ -131,5 +131,17 @@
     <string name="current_balance_sc">SDC:</string>
     <string name="transaction_content">ND:</string>
     <string name="select_branch">Chi nhánh</string>
+    <string name="bill_name">Tên hoá đơn:</string>
+    <string name="bill_unit">Đơn vị:</string>
+    <string name="bill_status">Trạng thái:</string>
+    <string name="bill_amount">Tổng tiền:</string>
+    <string name="fail_to_fetch_bill_list">Đã có lỗi xảy ra!! Vui lòng thử lại sau</string>
+    <string name="unpaid">Chưa thanh toán</string>
+    <string name="paid">Đã thanh toán</string>
+    <string name="bill_detail">Chi tiết hoá đơn</string>
+    <string name="pay_successfully">Pay successfully</string>
+    <string name="pay_fail">Fail to pay</string>
+    <string name="withdraw">Rút tiền</string>
+    <string name="pay">Thanh toán</string>
 
 </resources>

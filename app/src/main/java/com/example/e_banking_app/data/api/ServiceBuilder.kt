@@ -13,7 +13,9 @@ object ServiceBuilder {
         .create()
 //    private const val domain = "192.168.12.3";
 //    private const val domain = "192.168.2.166";
-    private const val domain = "10.11.252.43";
+//    private const val domain = "10.11.252.43";
+    private const val domain = "192.168.1.8";
+//    private const val domain = "192.168.1.73";
 //    private const val domain = "localhost";
     private val retrofit = Retrofit.Builder()
         .baseUrl("http://${domain}:85/api-ebanking/api/v1/")

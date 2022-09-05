@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_navigation_home_to_transferSelectionFragment"
             app:destination="@id/transferSelectionFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_billListFragment"
+            app:destination="@id/billListFragment" />
     </fragment>
 
     <fragment
@@ -152,5 +155,23 @@
         android:name="com.example.e_banking_app.ui.check_balance.CheckBalanceFragment"
         android:label="@string/check_balance"
         tools:layout="@layout/fragment_check_balance" />
+    <fragment
+        android:id="@+id/billListFragment"
+        android:name="com.example.e_banking_app.ui.bill.bill_list.BillListFragment"
+        android:label="@string/bill_payment"
+        tools:layout="@layout/fragment_bill_list" >
+        <action
+            android:id="@+id/action_billListFragment_to_billDetailFragment"
+            app:destination="@id/billDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/billDetailFragment"
+        android:name="com.example.e_banking_app.ui.bill.bill_detail.BillDetailFragment"
+        android:label="@string/bill_detail"
+        tools:layout="@layout/fragment_bill_detail" >
+        <argument
+            android:name="bill_item"
+            app:argType="com.example.e_banking_app.data.model.bill.BillItem" />
+    </fragment>
 
 </navigation>

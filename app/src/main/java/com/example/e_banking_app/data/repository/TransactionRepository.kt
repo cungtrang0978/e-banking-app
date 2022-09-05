@@ -7,10 +7,8 @@ import com.example.e_banking_app.data.api.TransactionApi
 import com.example.e_banking_app.data.model.BaseApiResponse
 import com.example.e_banking_app.data.model.balance.BalanceItem
 import com.example.e_banking_app.data.model.bank.Bank
-import com.example.e_banking_app.data.model.input.BillListInput
-import com.example.e_banking_app.data.model.input.CheckAccountInput
-import com.example.e_banking_app.data.model.input.InterbankTransferInput
-import com.example.e_banking_app.data.model.input.InternalTransferInput
+import com.example.e_banking_app.data.model.bill.BillItem
+import com.example.e_banking_app.data.model.input.*
 import com.example.e_banking_app.data.model.transaction.Transaction
 import com.example.e_banking_app.utils.AuthUtils
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -133,6 +131,43 @@ class TransactionRepository(private val context: Context) {
 
     }
 
+    fun pay(
+        billPayInput: BillPayInput,
+        onSuccess: () -> Unit,
+        onFailure: () -> Unit,
+    ) {
+        try {
+            val body = billPayInput.copy(token = AuthUtils.getToken(context)).toJSON()
+                .toRequestBody("application/json".toMediaTypeOrNull())
+            request.pay(body).enqueue(
+                object : Callback<BaseApiResponse<Any>> {
+                    override fun onResponse(
+                        call: retrofit2.Call<BaseApiResponse<Any>>,
+                        response: Response<BaseApiResponse<Any>>
+                    ) {
+                        if (response.isSuccessful && response.body() != null && response.body()?.query_err == false) {
+                            onSuccess()
+                        } else {
+                            onFailure()
+                        }
+                    }
+
+                    override fun onFailure(
+                        call: retrofit2.Call<BaseApiResponse<Any>>,
+                        t: Throwable
+                    ) {
+                        onFailure()
+                    }
+
+                }
+            )
+        } catch (e: Throwable) {
+            Log.d("pay: ", e.toString())
+            onFailure()
+        }
+
+    }
+
     fun getAllBankList(
         onSuccess: (List<Bank>) -> Unit,
         onFailure: () -> Unit
@@ -202,28 +237,27 @@ class TransactionRepository(private val context: Context) {
     }
 
     fun getBillUnpaid(
-        billListInput: BillListInput,
-        onSuccess: () -> Unit,
+        onSuccess: (List<BillItem>) -> Unit,
         onFailure: () -> Unit,
     ) {
         try {
-            val body = billListInput.copy(token = AuthUtils.getToken(context)).toJSON()
+            val body = BillListInput(token = AuthUtils.getToken(context)).toJSON()
                 .toRequestBody("application/json".toMediaTypeOrNull())
             request.getBillUnpaid(body).enqueue(
-                object : Callback<BaseApiResponse<Any>> {
+                object : Callback<BaseApiResponse<List<BillItem>>> {
                     override fun onResponse(
-                        call: retrofit2.Call<BaseApiResponse<Any>>,
-                        response: Response<BaseApiResponse<Any>>
+                        call: retrofit2.Call<BaseApiResponse<List<BillItem>>>,
+                        response: Response<BaseApiResponse<List<BillItem>>>
                     ) {
-                        if (response.isSuccessful && response.body()?.query_err == false) {
-                            onSuccess()
+                        if (response.isSuccessful && response.body() != null && response.body()?.query_err == false) {
+                            onSuccess(response.body()!!.result)
                         } else {
                             onFailure()
                         }
                     }
 
                     override fun onFailure(
-                        call: retrofit2.Call<BaseApiResponse<Any>>,
+                        call: retrofit2.Call<BaseApiResponse<List<BillItem>>>,
                         t: Throwable
                     ) {
                         onFailure()

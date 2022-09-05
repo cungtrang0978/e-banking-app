@@ -19,6 +19,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val passbookBtn get() = binding.passbook
     private val transferBtn get() = binding.transfer
+    private val billBtn get() = binding.bill
 
 
     override fun onCreateView(
@@ -42,6 +43,11 @@ class HomeFragment : Fragment() {
         }
         transferBtn.setOnClickListener {
             val action = HomeFragmentDirections.actionNavigationHomeToTransferSelectionFragment()
+            findNavController().navigate(action)
+        }
+
+        billBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionNavigationHomeToBillListFragment()
             findNavController().navigate(action)
         }
     }

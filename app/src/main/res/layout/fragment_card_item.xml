@@ -8,6 +8,7 @@
     app:cardExpiry="1234"
     app:cardExpiryLabel="Expiry"
     app:cardHolder="John Doe"
+    android:layout_marginVertical="8dp"
     app:cardHolderLabel="Holder"
     app:cardNumber="5201284799337668"
     app:maestroStyle="@style/DefaultGeneric" />

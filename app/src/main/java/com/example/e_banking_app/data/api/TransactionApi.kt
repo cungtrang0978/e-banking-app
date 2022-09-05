@@ -3,6 +3,7 @@ package com.example.e_banking_app.data.api
 import com.example.e_banking_app.data.model.BaseApiResponse
 import com.example.e_banking_app.data.model.balance.BalanceItem
 import com.example.e_banking_app.data.model.bank.Bank
+import com.example.e_banking_app.data.model.bill.BillItem
 import com.example.e_banking_app.data.model.transaction.Transaction
 import okhttp3.RequestBody
 import retrofit2.http.Body
@@ -39,5 +40,11 @@ interface TransactionApi {
     @POST("Bills")
     fun getBillUnpaid(
         @Body requestBody: RequestBody,
+    ): retrofit2.Call<BaseApiResponse<List<BillItem>>>
+
+    @POST("Bills/Pay")
+    fun pay(
+        @Body requestBody: RequestBody,
     ): retrofit2.Call<BaseApiResponse<Any>>
+
 }

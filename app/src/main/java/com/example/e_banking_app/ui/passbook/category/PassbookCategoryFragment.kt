@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.e_banking_app.R
 import com.example.e_banking_app.data.repository.PassbookRepository
 import com.example.e_banking_app.databinding.FragmentPassbookCategoryBinding
 
@@ -64,7 +65,7 @@ class PassbookCategoryFragment : Fragment() {
                 state.error?.let {
                     Toast.makeText(context?.applicationContext, it, Toast.LENGTH_LONG).show()
                 }
-
+                R.string.withdraw
 
             })
 

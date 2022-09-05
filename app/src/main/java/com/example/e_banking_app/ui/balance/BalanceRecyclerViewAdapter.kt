@@ -1,5 +1,6 @@
 package com.example.e_banking_app.ui.balance
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -33,9 +34,17 @@ class BalanceRecyclerViewAdapter(
         val item = values[position]
         holder.createdAt.text = item.date
         holder.accountNumber.text = item.id_customer
-        holder.amount.text = item.money.substring(1)
+        holder.amount.text = item.money[0] +
+                " " +
+                CurrencyUtils.format(item.money.substring(1))
         holder.content.text = item.message
         holder.currentBalance.text = CurrencyUtils.format(item.total_money)
+
+        if(item.money[0]== '-'){
+            holder.amount.setTextColor(Color.parseColor("#eb4034"))
+        }else{
+            holder.amount.setTextColor(Color.parseColor("#059913"))
+        }
     }
 
     override fun getItemCount(): Int = values.size

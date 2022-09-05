@@ -6,10 +6,10 @@ data class Passbook(
     val id_passbook: String,
     val id_customer: String,
     val money: String,
-    val name: String = "",
+    val name_passbook: String = "",
     val id_category_passbook: String,
     val created_at: String,
     val updated_at: String?,
-    val interest: String = "",
+    val interest_rate: String = "",
     val state: String,
 ) : JSONConvertible

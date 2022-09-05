@@ -2,9 +2,9 @@ package com.example.e_banking_app.ui.passbook.management
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.e_banking_app.R
 import com.example.e_banking_app.data.model.passbook.Passbook
 import com.example.e_banking_app.databinding.FragmentPassbookItemBinding
 import com.example.e_banking_app.utils.CurrencyUtils
@@ -14,7 +14,8 @@ import com.example.e_banking_app.utils.CurrencyUtils
  * TODO: Replace the implementation with code for your data type.
  */
 class PassbookRecyclerViewAdapter(
-    private val values: List<Passbook>
+    private val values: List<Passbook>,
+    private val onWithdrawClick: ((Passbook) -> Unit)? = null,
 ) : RecyclerView.Adapter<PassbookRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,9 +33,12 @@ class PassbookRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.id.text = item.id_passbook
-        holder.name.text = item.name
-        holder.interest.text = item.interest
+        holder.name.text = item.name_passbook
+        holder.interest.text = item.interest_rate+"%"
         holder.amount.text = CurrencyUtils.format(item.money)
+        holder.withdrawBtn.setOnClickListener {
+
+        }
     }
 
     override fun getItemCount(): Int = values.size
@@ -45,7 +49,13 @@ class PassbookRecyclerViewAdapter(
         val name: TextView = binding.passbookName
         val interest: TextView = binding.passbookInterest
         val amount: TextView = binding.amount
+        val withdrawBtn: Button = binding.withdrawBtn
 
+        init {
+            withdrawBtn.setOnClickListener {
+                onWithdrawClick?.invoke(values[absoluteAdapterPosition])
+            }
+        }
     }
 
 }
