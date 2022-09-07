@@ -20,7 +20,7 @@ class BillDetailViewModel(private val transactionRepository: TransactionReposito
                 _billDetailResult.value = BillDetailResult(success = R.string.pay_successfully)
             },
             onFailure = {
-                _billDetailResult.value = BillDetailResult(success = R.string.pay_fail)
+                _billDetailResult.value = BillDetailResult(error = R.string.pay_fail)
 
             }
         )

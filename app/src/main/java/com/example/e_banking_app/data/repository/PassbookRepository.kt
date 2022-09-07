@@ -131,9 +131,9 @@ class PassbookRepository(private val context: Context) {
         onFailure: () -> Unit,
     ) {
         try {
-            val newPassbookInput = withdrawPassbookInput.copy(token = AuthUtils.getToken(context))
+            //                .copy(token = AuthUtils.getToken(context))
             val requestBody =
-                newPassbookInput.toJSON().toRequestBody("application/json".toMediaTypeOrNull())
+                withdrawPassbookInput.toJSON().toRequestBody("application/json".toMediaTypeOrNull())
             request.withdraw(requestBody).enqueue(
                 object : Callback<BaseApiResponse<Any>> {
                     override fun onResponse(
@@ -158,7 +158,7 @@ class PassbookRepository(private val context: Context) {
             )
 
         } catch (e: Throwable) {
-            Log.d("addPassbook: ", e.toString())
+            Log.d("withdraw: ", e.toString())
             onFailure()
         }
     }

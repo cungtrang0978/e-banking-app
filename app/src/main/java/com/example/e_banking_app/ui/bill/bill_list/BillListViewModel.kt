@@ -15,7 +15,7 @@ class BillListViewModel(private val transactionRepository: TransactionRepository
         fetchBillList()
     }
 
-    private fun fetchBillList() {
+    fun fetchBillList() {
         transactionRepository.getBillUnpaid(
             onSuccess = {
                 _billListResult.value = BillListResult(success = it)

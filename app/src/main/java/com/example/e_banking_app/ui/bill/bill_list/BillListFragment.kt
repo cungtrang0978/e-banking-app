@@ -72,7 +72,7 @@ class BillListFragment : Fragment() {
                                 BillListFragmentDirections.actionBillListFragmentToBillDetailFragment(
                                     it
                                 )
-                            findNavController().navigate(action)
+                            findNavController().navigate((action))
                         }
                 }
 
@@ -81,6 +81,11 @@ class BillListFragment : Fragment() {
                 Toast.makeText(context?.applicationContext, it, Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchBillList()
     }
 
     override fun onDestroyView() {

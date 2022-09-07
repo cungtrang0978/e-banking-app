@@ -137,7 +137,9 @@ class TransactionRepository(private val context: Context) {
         onFailure: () -> Unit,
     ) {
         try {
-            val body = billPayInput.copy(token = AuthUtils.getToken(context)).toJSON()
+            val body = billPayInput
+//                .copy(token = AuthUtils.getToken(context))
+                .toJSON()
                 .toRequestBody("application/json".toMediaTypeOrNull())
             request.pay(body).enqueue(
                 object : Callback<BaseApiResponse<Any>> {
