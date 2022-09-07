@@ -36,6 +36,7 @@ class PassbookRecyclerViewAdapter(
         holder.name.text = item.name_passbook
         holder.interest.text = item.interest_rate+"%"
         holder.amount.text = CurrencyUtils.format(item.money)
+        holder.withdrawBtn.isEnabled = item.due
     }
 
     override fun getItemCount(): Int = values.size
@@ -46,7 +47,7 @@ class PassbookRecyclerViewAdapter(
         val name: TextView = binding.passbookName
         val interest: TextView = binding.passbookInterest
         val amount: TextView = binding.amount
-        val withdrawBtn: Button = binding.withdrawBtn
+         val withdrawBtn: Button = binding.withdrawBtn
 
         init {
             withdrawBtn.setOnClickListener {

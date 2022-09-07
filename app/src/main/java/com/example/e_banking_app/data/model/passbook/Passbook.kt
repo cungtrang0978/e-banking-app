@@ -11,5 +11,6 @@ data class Passbook(
     val created_at: String,
     val updated_at: String?,
     val interest_rate: String = "",
+    val due: Boolean,
     val state: String,
 ) : JSONConvertible
