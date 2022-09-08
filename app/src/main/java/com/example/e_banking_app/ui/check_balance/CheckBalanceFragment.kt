@@ -41,6 +41,12 @@ class CheckBalanceFragment : Fragment() {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchProfile()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

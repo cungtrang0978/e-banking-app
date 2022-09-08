@@ -15,7 +15,7 @@ class CheckBalanceViewModel(private val userRepository: UserRepository) : ViewMo
         fetchProfile()
     }
 
-    private fun fetchProfile() {
+    fun fetchProfile() {
         userRepository.getProfile(
             onSuccess = {
                 _infoResult.value = InfoResult(success = it)
