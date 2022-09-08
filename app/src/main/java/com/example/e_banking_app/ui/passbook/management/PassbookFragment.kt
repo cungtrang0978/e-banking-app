@@ -59,8 +59,9 @@ class PassbookFragment : Fragment() {
                             loading.visibility = View.VISIBLE
                             viewModel.withdrawPassbook(passbook)
                         },
+                        context = context!!
 
-                        )
+                    )
                 }
                 result.error?.let {
                     Toast.makeText(context?.applicationContext, it, Toast.LENGTH_LONG).show()

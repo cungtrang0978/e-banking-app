@@ -1,10 +1,12 @@
 package com.example.e_banking_app.ui.passbook.management
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.e_banking_app.R
 import com.example.e_banking_app.data.model.passbook.Passbook
 import com.example.e_banking_app.databinding.FragmentPassbookItemBinding
 import com.example.e_banking_app.utils.CurrencyUtils
@@ -16,6 +18,7 @@ import com.example.e_banking_app.utils.CurrencyUtils
 class PassbookRecyclerViewAdapter(
     private val values: List<Passbook>,
     private val onWithdrawClick: ((Passbook) -> Unit)? = null,
+    private val context: Context,
 ) : RecyclerView.Adapter<PassbookRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,7 +37,8 @@ class PassbookRecyclerViewAdapter(
         val item = values[position]
         holder.id.text = item.id_passbook
         holder.name.text = item.name_passbook
-        holder.interest.text = item.interest_rate+"%"
+        holder.period.text = item.period + " "+ context.getString(R.string.month)
+        holder.interest.text = item.interest_rate + "%"
         holder.amount.text = CurrencyUtils.format(item.money)
         holder.withdrawBtn.isEnabled = item.due
     }
@@ -47,7 +51,8 @@ class PassbookRecyclerViewAdapter(
         val name: TextView = binding.passbookName
         val interest: TextView = binding.passbookInterest
         val amount: TextView = binding.amount
-         val withdrawBtn: Button = binding.withdrawBtn
+        val withdrawBtn: Button = binding.withdrawBtn
+        val period: TextView = binding.passbookPeriod
 
         init {
             withdrawBtn.setOnClickListener {

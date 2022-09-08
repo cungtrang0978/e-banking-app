@@ -6,6 +6,7 @@ data class Passbook(
     val id_passbook: String,
     val id_customer: String,
     val money: String,
+    val period: String,
     val name_passbook: String = "",
     val id_category_passbook: String,
     val created_at: String,
